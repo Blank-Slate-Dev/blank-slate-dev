@@ -1,7 +1,9 @@
+// components/header.tsx
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -22,10 +24,17 @@ export default function Header() {
       className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-slate-900">
-            YourBrand
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/BlankSlateDevToFillHeader.png"
+              alt="Blank Slate Dev"
+              width={600}
+              height={96}
+              className="h-20 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
