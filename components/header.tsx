@@ -21,18 +21,18 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/BlankSlateDevToFillHeader.png"
+              src="/Blank-slate-dev.png"
               alt="Blank Slate Dev"
               width={600}
-              height={96}
-              className="h-20 w-auto"
+              height={120}
+              className="h-16 w-auto drop-shadow-sm"
               priority
             />
           </Link>
@@ -43,7 +43,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-slate-700 transition-colors hover:text-teal-600"
+                className="text-sm font-medium text-slate-800 transition-colors hover:text-primary"
               >
                 {link.label}
               </Link>
@@ -77,7 +77,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-slate-700 transition-colors hover:text-teal-600"
+                  className="text-sm font-medium text-slate-800 transition-colors hover:text-primary"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}

@@ -29,7 +29,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#f6f2fb] via-white to-[#f3edf9]">
       <Header />
 
       {/* Hero Section */}
@@ -38,9 +38,9 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <FadeIn>
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 px-5 py-2.5 shadow-sm">
-              <Sparkles className="h-4 w-4 text-emerald-600" />
-              <span className="text-sm font-semibold text-emerald-900">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-5 py-2.5 shadow-sm">
+              <Sparkles className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold text-slate-900">
                 Trusted by 50+ startups worldwide
               </span>
             </div>
@@ -49,10 +49,10 @@ export default function Home() {
           <Wordmark />
 
           <SlideUp delay={0.2}>
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-slate-600 sm:text-2xl sm:leading-relaxed">
-              We transform your vision into exceptional digital products with 
-              <span className="font-semibold text-slate-900"> cutting-edge technology</span> and 
-              <span className="font-semibold text-slate-900"> pixel-perfect design</span>.
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-slate-700 sm:text-2xl sm:leading-relaxed">
+              We transform your vision into exceptional digital products with
+              <span className="font-semibold text-[#2d233d]"> cutting-edge technology</span> and
+              <span className="font-semibold text-[#2d233d]"> pixel-perfect design</span>.
             </p>
           </SlideUp>
 
@@ -71,16 +71,16 @@ export default function Home() {
           <SlideUp delay={0.6}>
             <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-emerald-600" />
-                <span className="text-slate-700 font-medium">2-week sprints</span>
+                <CheckCircle className="h-5 w-5 text-primary" />
+                <span className="text-slate-800 font-medium">2-week sprints</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-emerald-600" />
-                <span className="text-slate-700 font-medium">Fixed pricing</span>
+                <CheckCircle className="h-5 w-5 text-primary" />
+                <span className="text-slate-800 font-medium">Fixed pricing</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-emerald-600" />
-                <span className="text-slate-700 font-medium">100% remote</span>
+                <CheckCircle className="h-5 w-5 text-primary" />
+                <span className="text-slate-800 font-medium">100% remote</span>
               </div>
             </div>
           </SlideUp>
@@ -106,13 +106,13 @@ export default function Home() {
             ].map((stat, idx) => (
               <SlideUp key={idx} delay={idx * 0.1}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-teal-100 to-emerald-100 text-teal-700">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#f3edf9] to-[#e8dcfb] text-[#4f3a72]">
                     {stat.icon}
                   </div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-[#604585] via-[#8f6fcc] to-[#c48ef6] bg-clip-text text-transparent">
                     {stat.number}
                   </div>
-                  <p className="mt-2 text-sm font-medium text-slate-600">{stat.label}</p>
+                  <p className="mt-2 text-sm font-medium text-slate-700">{stat.label}</p>
                 </div>
               </SlideUp>
             ))}
@@ -160,13 +160,13 @@ export default function Home() {
               icon={<Blocks className="h-6 w-6" />}
               title="API Development"
               description="RESTful and GraphQL APIs, microservices, and seamless third-party integrations."
-              gradient="from-teal-500 to-emerald-600"
+              gradient="from-[#604585] to-[#8f6fcc]"
             />
             <FeatureCard
               icon={<Shield className="h-6 w-6" />}
               title="Security & Compliance"
               description="Enterprise-grade security, GDPR compliance, and comprehensive testing."
-              gradient="from-green-500 to-teal-600"
+              gradient="from-[#8f6fcc] to-[#c48ef6]"
             />
             <FeatureCard
               icon={<Rocket className="h-6 w-6" />}
@@ -179,49 +179,49 @@ export default function Home() {
       </Section>
 
       {/* Process */}
-      <Section className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32">
+      <Section className="bg-gradient-to-b from-[#f3edf9] to-white py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-4 py-2 text-sm font-semibold text-slate-800">
                 PROCESS
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 How we work
               </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-700">
                 A battle-tested process refined over 120+ successful projects.
               </p>
             </FadeIn>
           </div>
 
           <div className="mt-20 relative">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-slate-200 to-transparent transform -translate-y-1/2 hidden lg:block" />
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent transform -translate-y-1/2 hidden lg:block" />
             <div className="grid gap-12 lg:grid-cols-4">
               {[
                 {
                   step: "01",
                   title: "Discovery",
                   description: "Deep dive into your vision, goals, and technical requirements.",
-                  color: "from-blue-500 to-indigo-600",
+                  color: "from-[#604585] to-[#8f6fcc]",
                 },
                 {
                   step: "02",
                   title: "Design",
                   description: "Wireframes, prototypes, and pixel-perfect UI designs.",
-                  color: "from-purple-500 to-pink-600",
+                  color: "from-[#8f6fcc] to-[#c48ef6]",
                 },
                 {
                   step: "03",
                   title: "Development",
                   description: "Agile sprints with weekly demos and continuous deployment.",
-                  color: "from-orange-500 to-red-600",
+                  color: "from-[#2d233d] to-[#604585]",
                 },
                 {
                   step: "04",
                   title: "Launch",
                   description: "Go live with confidence, backed by thorough testing and support.",
-                  color: "from-green-500 to-teal-600",
+                  color: "from-[#b373ef] to-[#c48ef6]",
                 },
               ].map((item, idx) => (
                 <SlideUp key={idx} delay={idx * 0.15}>
@@ -270,7 +270,7 @@ export default function Home() {
                 title: "Healthcare Portal",
                 description: "HIPAA-compliant telemedicine platform with video consultations",
                 tags: ["React", "Node.js", "WebRTC"],
-                gradient: "from-green-400 to-teal-600",
+                gradient: "from-[#604585] to-[#8f6fcc]",
               },
               {
                 title: "E-Learning Platform",
@@ -292,7 +292,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="mt-3 text-slate-600 leading-relaxed">{project.description}</p>
@@ -323,11 +323,11 @@ export default function Home() {
       </Section>
 
       {/* Testimonials */}
-      <Section className="bg-gradient-to-b from-slate-50 to-white py-24 lg:py-32">
+      <Section className="bg-gradient-to-b from-[#f3edf9] to-white py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-4 py-2 text-sm font-semibold text-slate-800">
                 TESTIMONIALS
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
@@ -350,7 +350,7 @@ export default function Home() {
                 author: "Michael Rodriguez",
                 role: "CTO",
                 company: "Growth Co",
-                gradient: "from-green-500 to-teal-600",
+                gradient: "from-[#604585] to-[#c48ef6]",
               },
               {
                 quote: "The best development partner we've ever worked with. They don't just code – they understand business goals and deliver solutions that drive real results.",
