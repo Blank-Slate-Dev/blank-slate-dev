@@ -34,16 +34,16 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <Section className="relative overflow-hidden pt-32 pb-24 lg:pt-44 lg:pb-36">
+      <Section className="relative overflow-hidden pt-24 pb-24 lg:pt-32 lg:pb-36">
         <AnimatedGrid />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <Image
             src="/Blank-slate-dev.png"
             alt="Blank Slate Dev"
-            width={300}
-            height={300}
-            className="mx-auto mb-6 h-32 w-auto md:h-40 drop-shadow-sm"
+            width={600}
+            height={600}
+            className="mx-auto mb-6 h-64 w-auto md:h-80 drop-shadow-sm"
             priority
           />
 
