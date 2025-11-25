@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -26,15 +25,8 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/Blank-slate-dev.png"
-              alt="Blank Slate Dev"
-              width={200}
-              height={200}
-              className="h-48 w-auto drop-shadow-sm md:h-34"
-              priority
-            />
+          <Link href="/" className="flex items-center" aria-label="Home">
+            <span className="sr-only">Blank Slate Dev</span>
           </Link>
 
           {/* Desktop Navigation */}

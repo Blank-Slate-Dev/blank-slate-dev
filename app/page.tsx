@@ -13,6 +13,7 @@ import FeatureCard from "@/components/feature-card";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 import {
   Code2,
   Sparkles,
@@ -37,6 +38,15 @@ export default function Home() {
         <AnimatedGrid />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
+          <Image
+            src="/Blank-slate-dev.png"
+            alt="Blank Slate Dev"
+            width={300}
+            height={300}
+            className="mx-auto mb-6 h-32 w-auto md:h-40 drop-shadow-sm"
+            priority
+          />
+
           <FadeIn>
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-5 py-2.5 shadow-sm">
               <Sparkles className="h-4 w-4 text-primary" />
