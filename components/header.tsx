@@ -30,9 +30,9 @@ export default function Header() {
             <Image
               src="/Blank-slate-dev.png"
               alt="Blank Slate Dev"
-              width={600}
+              width={120}
               height={120}
-              className="h-16 w-auto drop-shadow-sm"
+              className="h-12 w-auto drop-shadow-sm md:h-14"
               priority
             />
           </Link>
