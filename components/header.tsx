@@ -23,14 +23,14 @@ export default function Header() {
       className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between py-3">
+        <div className="relative flex items-center justify-between py-3">
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Home">
             <span className="sr-only">Blank Slate Dev</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:gap-8">
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 md:flex md:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
