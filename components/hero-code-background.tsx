@@ -1,73 +1,91 @@
 "use client";
 
-import { CSSProperties, useEffect, useMemo, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
-const LINE_COUNT = 16;
+const MIN_SNIPPETS = 20;
+const MAX_SNIPPETS = 40;
 const CHARACTERS =
-  "const let function return if else => () {} [] <> 0123456789 abcdefghijklmnopqrstuvwxyz";
+  "const let function return if else => () {} [] <> 0123456789 abcdefghijklmnopqrstuvwxyz!@#$%^&*";
 
-function randomFromString(count: number) {
-  const chars = [] as string[];
-  for (let i = 0; i < count; i += 1) {
-    const index = Math.floor(Math.random() * CHARACTERS.length);
-    chars.push(CHARACTERS[index]);
-  }
-  return chars.join("");
+type CodeSnippet = {
+  id: number;
+  text: string;
+  left: number;
+  top: number;
+  opacity: number;
+  delay: number;
+  duration: number;
+  fontSize: number;
+};
+
+function randomText() {
+  const length = 8 + Math.floor(Math.random() * 16);
+  return Array.from({ length }, () => {
+    const char = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
+    return Math.random() > 0.8 ? char.toUpperCase() : char;
+  }).join("");
 }
 
-function generateLine(index: number) {
-  const length = 28 + Math.floor(Math.random() * 24);
+function generatePosition() {
+  let left = Math.random() * 100;
+  let top = Math.random() * 100;
+
+  while (left > 38 && left < 62 && top > 24 && top < 56) {
+    left = Math.random() * 100;
+    top = Math.random() * 100;
+  }
+
+  return { left, top };
+}
+
+function createSnippet(id: number): CodeSnippet {
+  const { left, top } = generatePosition();
+
   return {
-    id: index,
-    text: randomFromString(length),
-    top: Math.min(96, Math.max(2, (index / LINE_COUNT) * 100 + (Math.random() * 6 - 3))),
+    id,
+    text: randomText(),
+    left,
+    top,
+    opacity: 0.05 + Math.random() * 0.07,
     delay: Math.random() * 2.5,
     duration: 3 + Math.random() * 3,
+    fontSize: 10 + Math.floor(Math.random() * 5),
   };
 }
 
 export default function HeroCodeBackground() {
-  const [lines, setLines] = useState(() =>
-    Array.from({ length: LINE_COUNT }, (_, index) => generateLine(index))
-  );
+  const [snippets, setSnippets] = useState<CodeSnippet[]>(() => {
+    const count = MIN_SNIPPETS + Math.floor(Math.random() * (MAX_SNIPPETS - MIN_SNIPPETS + 1));
+    return Array.from({ length: count }, (_, index) => createSnippet(index));
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLines((previous) =>
-        previous.map((line) => ({
-          ...line,
-          text: randomFromString(28 + Math.floor(Math.random() * 24)),
-          delay: Math.random() * 2.5,
-          duration: 3 + Math.random() * 3,
-        }))
-      );
-    }, 1600);
+      setSnippets((previous) => previous.map((snippet) => createSnippet(snippet.id)));
+    }, 1800);
 
     return () => clearInterval(interval);
   }, []);
 
-  const gradientMask = useMemo(
-    () => (
-      <div className="absolute inset-0 bg-gradient-to-b from-[#241631]/40 via-transparent to-transparent" />
-    ),
-    []
-  );
-
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      {gradientMask}
-      {lines.map((line) => (
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#241631]/35 via-transparent to-transparent" />
+
+      {snippets.map((snippet) => (
         <div
-          key={line.id}
-          className="code-line px-6 text-[11px] font-mono leading-relaxed text-[#2d233d] opacity-10 sm:px-8 sm:text-xs md:text-sm"
+          key={`${snippet.id}-${snippet.text}`}
+          className="absolute font-mono text-[#2d233d]"
           style={{
-            top: `${line.top}%`,
-            animationDelay: `${line.delay}s`,
-            // @ts-expect-error -- CSS custom property for animation duration
-            "--flicker-duration": `${line.duration}s`,
+            left: `${snippet.left}%`,
+            top: `${snippet.top}%`,
+            opacity: snippet.opacity,
+            animation: `code-flicker ${snippet.duration}s ease-in-out infinite`,
+            animationDelay: `${snippet.delay}s`,
+            letterSpacing: "0.08em",
+            fontSize: `${snippet.fontSize}px`,
           } as CSSProperties}
         >
-          {line.text}
+          {snippet.text}
         </div>
       ))}
     </div>
