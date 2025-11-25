@@ -34,7 +34,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <Section className="relative overflow-hidden pt-24 pb-24 lg:pt-32 lg:pb-36">
+      <Section className="relative overflow-hidden pt-6 pb-24 lg:pb-36">
         <AnimatedGrid />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
