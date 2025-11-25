@@ -14,6 +14,7 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import LogoCodeBackdrop from "@/components/brand/logo-code-backdrop";
 import {
   Code2,
   Sparkles,
@@ -30,7 +31,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#f6f2fb] via-white to-[#f3edf9]">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#e6dcfa] via-[#f1e8ff] to-[#d9c9f4]">
       <Header />
 
       {/* Hero Section */}
@@ -38,14 +39,17 @@ export default function Home() {
         <AnimatedGrid />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
-          <Image
-            src="/Blank-slate-dev.png"
-            alt="Blank Slate Dev"
-            width={600}
-            height={600}
-            className="mx-auto mb-6 h-64 w-auto md:h-80 drop-shadow-sm"
-            priority
-          />
+          <div className="relative mx-auto mb-6 inline-flex">
+            <LogoCodeBackdrop />
+            <Image
+              src="/Blank-slate-dev.png"
+              alt="Blank Slate Dev"
+              width={600}
+              height={600}
+              className="relative z-10 h-64 w-auto md:h-80 drop-shadow-sm"
+              priority
+            />
+          </div>
 
           <FadeIn>
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-5 py-2.5 shadow-sm">
