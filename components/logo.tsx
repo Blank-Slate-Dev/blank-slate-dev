@@ -6,9 +6,9 @@ export default function Logo() {
     <Image
       src="/Blank-slate-dev.png"
       alt="Blank Slate Dev"
-      width={320}
-      height={72}
-      className="h-12 w-auto drop-shadow"
+      width={120}
+      height={120}
+      className="h-12 w-auto drop-shadow md:h-14"
     />
   );
 }
