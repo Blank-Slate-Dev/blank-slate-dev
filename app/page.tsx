@@ -14,7 +14,6 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import LogoCodeBackdrop from "@/components/brand/logo-code-backdrop";
 import HeroCodeBackground from "@/components/hero-code-background";
 import {
   Code2,
@@ -36,22 +35,24 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <Section className="relative overflow-hidden pt-6 pb-24 lg:pb-36">
-        <AnimatedGrid />
-        <HeroCodeBackground />
+      <section className="relative overflow-hidden pt-6 pb-24 lg:pb-36">
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <AnimatedGrid />
+          <HeroCodeBackground />
+        </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl text-center">
-          <div className="relative mx-auto mb-6 inline-flex">
-            <LogoCodeBackdrop />
-            <Image
-              src="/Blank-slate-dev.png"
-              alt="Blank Slate Dev"
-              width={600}
-              height={600}
-              className="relative z-10 h-64 w-auto md:h-80 drop-shadow-sm"
-              priority
-            />
-          </div>
+        <Section className="relative z-10">
+          <div className="relative z-10 mx-auto max-w-6xl text-center">
+            <div className="relative z-10 mx-auto mb-6 inline-flex">
+              <Image
+                src="/Blank-slate-dev.png"
+                alt="Blank Slate Dev"
+                width={600}
+                height={600}
+                className="relative z-10 h-64 w-auto md:h-80 drop-shadow-sm"
+                priority
+              />
+            </div>
 
           <FadeIn>
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-5 py-2.5 shadow-sm">
@@ -100,8 +101,9 @@ export default function Home() {
               </div>
             </div>
           </SlideUp>
-        </div>
-      </Section>
+          </div>
+        </Section>
+      </section>
 
       {/* Trust Logos */}
       <Section className="border-y border-slate-200 bg-white py-16">
