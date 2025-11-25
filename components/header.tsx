@@ -24,15 +24,15 @@ export default function Header() {
       className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="flex h-24 items-center justify-between">
+        <div className="flex items-center justify-between py-6">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/Blank-slate-dev.png"
               alt="Blank Slate Dev"
-              width={120}
-              height={120}
-              className="h-12 w-auto drop-shadow-sm md:h-14"
+              width={360}
+              height={360}
+              className="h-36 w-auto drop-shadow-sm md:h-40"
               priority
             />
           </Link>
