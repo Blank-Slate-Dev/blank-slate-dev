@@ -27,7 +27,7 @@ export default function ContactCTA() {
 
   return (
     <Section className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f3edf9] via-[#e8dcfb] to-[#f6f2fb]" />
       
       <FadeIn>
         <motion.div 
@@ -37,8 +37,8 @@ export default function ContactCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 p-2">
-            <div className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 px-12 py-20 text-center relative overflow-hidden">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#2d233d] via-[#4f3a72] to-[#8f6fcc] p-2">
+            <div className="rounded-3xl bg-gradient-to-br from-[#2d233d] via-[#4f3a72] to-[#8f6fcc] px-12 py-20 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-black/10" />
               
               <motion.div
@@ -67,7 +67,7 @@ export default function ContactCTA() {
                 <h2 className="text-5xl font-black text-white mb-6">
                   Ready to build something amazing?
                 </h2>
-                <p className="mx-auto max-w-2xl text-xl text-emerald-50 mb-12">
+                <p className="mx-auto max-w-2xl text-xl text-[#ede7f5] mb-12">
                   Let's turn your vision into reality. Get a free consultation and project estimate.
                 </p>
 
@@ -75,7 +75,7 @@ export default function ContactCTA() {
                   <DialogTrigger asChild>
                     <Button
                       size="xl"
-                      className="bg-white text-emerald-600 hover:bg-emerald-50 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-lg px-10 py-6"
+                      className="bg-white text-[#4f3a72] hover:bg-[#f3edf9] shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-lg px-10 py-6"
                     >
                       Start your project
                       <ArrowRight className="ml-3 h-6 w-6" />
@@ -99,7 +99,7 @@ export default function ContactCTA() {
                           type="text"
                           id="name"
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                           placeholder="John Doe"
                         />
                       </div>
@@ -112,7 +112,7 @@ export default function ContactCTA() {
                           type="email"
                           id="email"
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -124,7 +124,7 @@ export default function ContactCTA() {
                         <input
                           type="text"
                           id="company"
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                           placeholder="Acme Inc."
                         />
                       </div>
@@ -137,7 +137,7 @@ export default function ContactCTA() {
                           id="message"
                           rows={4}
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 transition-all resize-none"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all resize-none"
                           placeholder="Tell us about your project, timeline, and budget..."
                         />
                       </div>

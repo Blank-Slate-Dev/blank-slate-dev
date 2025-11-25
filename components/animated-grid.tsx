@@ -14,7 +14,7 @@ export default function AnimatedGrid() {
         transition={{ duration: 2 }}
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-transparent to-teal-50 opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f3edf9] via-transparent to-[#e8dcfb] opacity-50" />
         
         <motion.div
           animate={{
@@ -27,7 +27,7 @@ export default function AnimatedGrid() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -top-48 -left-48 h-96 w-96 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 blur-3xl"
+          className="absolute -top-48 -left-48 h-96 w-96 rounded-full bg-gradient-to-br from-[#604585] to-[#c48ef6] blur-3xl"
         />
         
         <motion.div
@@ -42,7 +42,7 @@ export default function AnimatedGrid() {
             ease: "easeInOut",
             delay: 5,
           }}
-          className="absolute -bottom-48 -right-48 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400 to-emerald-400 blur-3xl"
+          className="absolute -bottom-48 -right-48 h-96 w-96 rounded-full bg-gradient-to-br from-[#7f5fb0] to-[#c48ef6] blur-3xl"
         />
         
         <motion.div
@@ -56,7 +56,7 @@ export default function AnimatedGrid() {
             ease: "easeInOut",
             delay: 2.5,
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-teal-300 to-emerald-300 blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#8f6fcc] to-[#c48ef6] blur-3xl"
         />
       </motion.div>
     </div>

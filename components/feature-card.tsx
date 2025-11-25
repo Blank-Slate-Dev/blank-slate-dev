@@ -16,7 +16,7 @@ export default function FeatureCard({
   icon,
   title,
   description,
-  gradient = "from-teal-500 to-emerald-600",
+  gradient = "from-[#604585] to-[#c48ef6]",
 }: FeatureCardProps) {
   return (
     <motion.div
