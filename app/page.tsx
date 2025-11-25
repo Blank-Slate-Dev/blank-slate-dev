@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import LogoCodeBackdrop from "@/components/brand/logo-code-backdrop";
+import HeroCodeBackground from "@/components/hero-code-background";
 import {
   Code2,
   Sparkles,
@@ -37,6 +38,7 @@ export default function Home() {
       {/* Hero Section */}
       <Section className="relative overflow-hidden pt-6 pb-24 lg:pb-36">
         <AnimatedGrid />
+        <HeroCodeBackground />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <div className="relative mx-auto mb-6 inline-flex">
