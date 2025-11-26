@@ -69,11 +69,18 @@ export default function Home() {
 
           <SlideUp delay={0.4}>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-              <Button size="xl" className="group shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button
+                size="xl"
+                className="group bg-[#B085FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#B085FF] hover:bg-none hover:shadow-[0_0_22px_rgba(0,255,102,0.6)]"
+              >
                 Start your project
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="xl" variant="outline" className="border-2">
+              <Button
+                size="xl"
+                variant="outline"
+                className="border-[1.5px] border-[#00ff66] bg-transparent text-[#A8C7FF] shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:border-[#00ff66] hover:bg-transparent hover:text-[#CFE3FF] hover:shadow-[0_0_16px_rgba(0,255,102,0.6)]"
+              >
                 View case studies
               </Button>
             </div>
