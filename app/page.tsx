@@ -59,14 +59,6 @@ export default function Home() {
 
           <Wordmark />
 
-          <SlideUp delay={0.2}>
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-[#A8C7FF] sm:text-2xl sm:leading-relaxed">
-              We transform your vision into exceptional digital products with
-              <span className="font-semibold"> cutting-edge technology</span> and
-              <span className="font-semibold"> pixel-perfect design</span>.
-            </p>
-          </SlideUp>
-
           <SlideUp delay={0.4}>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <Button
@@ -78,8 +70,7 @@ export default function Home() {
               </Button>
               <Button
                 size="xl"
-                variant="outline"
-                className="border-[1.5px] border-[#00ff66] bg-transparent text-[#A8C7FF] shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:border-[#00ff66] hover:bg-transparent hover:text-[#CFE3FF] hover:shadow-[0_0_16px_rgba(0,255,102,0.6)]"
+                className="group bg-[#A8C7FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#A8C7FF] hover:bg-none hover:shadow-[0_0_20px_#A8C7FF]"
               >
                 View case studies
               </Button>
