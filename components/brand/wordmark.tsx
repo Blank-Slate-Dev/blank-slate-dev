@@ -10,14 +10,10 @@ export default function Wordmark() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight"
+        className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#B085FF]"
       >
-        <span className="bg-gradient-to-r from-[#2d233d] via-[#3a2a4f] to-[#2d233d] bg-clip-text text-transparent">
-          Blank Slate
-        </span>
-        <span className="bg-gradient-to-r from-[#604585] via-[#8f6fcc] to-[#c48ef6] bg-clip-text text-transparent">
-          {" "}Dev
-        </span>
+        <span>Blank Slate</span>
+        <span>{" "}Dev</span>
       </motion.h1>
       <motion.div
         initial={{ scaleX: 0 }}
