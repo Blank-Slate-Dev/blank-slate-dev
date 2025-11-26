@@ -67,7 +67,7 @@ export default function HeroCodeBackground() {
       {snippets.map((snippet) => (
         <div
           key={`${snippet.id}-${snippet.text}`}
-          className="absolute font-mono text-[#00ff66]"
+          className="absolute font-mono text-[#A8C7FF]"
           style={{
             left: `${snippet.left}%`,
             top: `${snippet.top}%`,
