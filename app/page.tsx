@@ -60,10 +60,10 @@ export default function Home() {
           <Wordmark />
 
           <SlideUp delay={0.2}>
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-slate-700 sm:text-2xl sm:leading-relaxed">
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-[#A8C7FF] sm:text-2xl sm:leading-relaxed">
               We transform your vision into exceptional digital products with
-              <span className="font-semibold text-[#2d233d]"> cutting-edge technology</span> and
-              <span className="font-semibold text-[#2d233d]"> pixel-perfect design</span>.
+              <span className="font-semibold"> cutting-edge technology</span> and
+              <span className="font-semibold"> pixel-perfect design</span>.
             </p>
           </SlideUp>
 
