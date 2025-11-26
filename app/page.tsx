@@ -6,7 +6,6 @@ import { FadeIn } from "@/components/motion/fade-in";
 import { SlideUp } from "@/components/motion/slide-up";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
-import AnimatedGrid from "@/components/animated-grid";
 import Wordmark from "@/components/brand/wordmark";
 import TrustLogos from "@/components/trust-logos";
 import FeatureCard from "@/components/feature-card";
@@ -31,13 +30,12 @@ import {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#e6dcfa] via-[#f1e8ff] to-[#d9c9f4]">
+    <div className="relative min-h-screen">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-6 pb-24 lg:pb-36">
+      <section className="relative overflow-hidden bg-[#1a1a1a] pt-6 pb-24 lg:pb-36">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <AnimatedGrid />
           <HeroCodeBackground />
         </div>
 
@@ -49,7 +47,7 @@ export default function Home() {
                 alt="Blank Slate Dev"
                 width={600}
                 height={600}
-                className="relative z-10 h-64 w-auto md:h-80 drop-shadow-sm"
+                className="relative z-10 h-64 w-auto md:h-80 drop-shadow-[0_0_20px_rgba(0,255,102,0.6)]"
                 priority
               />
             </div>

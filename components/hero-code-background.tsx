@@ -2,8 +2,8 @@
 
 import { CSSProperties, useEffect, useState } from "react";
 
-const MIN_SNIPPETS = 20;
-const MAX_SNIPPETS = 40;
+const MIN_SNIPPETS = 30;
+const MAX_SNIPPETS = 50;
 const CHARACTERS =
   "const let function return if else => () {} [] <> 0123456789 abcdefghijklmnopqrstuvwxyz!@#$%^&*";
 
@@ -27,13 +27,8 @@ function randomText() {
 }
 
 function generatePosition() {
-  let left = Math.random() * 100;
-  let top = Math.random() * 100;
-
-  while (left > 38 && left < 62 && top > 24 && top < 56) {
-    left = Math.random() * 100;
-    top = Math.random() * 100;
-  }
+  const left = Math.random() * 100;
+  const top = Math.random() * 100;
 
   return { left, top };
 }
@@ -46,7 +41,7 @@ function createSnippet(id: number): CodeSnippet {
     text: randomText(),
     left,
     top,
-    opacity: 0.05 + Math.random() * 0.07,
+    opacity: 0.45 + Math.random() * 0.1,
     delay: Math.random() * 2.5,
     duration: 3 + Math.random() * 3,
     fontSize: 10 + Math.floor(Math.random() * 5),
@@ -69,12 +64,10 @@ export default function HeroCodeBackground() {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#241631]/35 via-transparent to-transparent" />
-
       {snippets.map((snippet) => (
         <div
           key={`${snippet.id}-${snippet.text}`}
-          className="absolute font-mono text-[#2d233d]"
+          className="absolute font-mono text-[#00ff66]"
           style={{
             left: `${snippet.left}%`,
             top: `${snippet.top}%`,
@@ -83,6 +76,7 @@ export default function HeroCodeBackground() {
             animationDelay: `${snippet.delay}s`,
             letterSpacing: "0.08em",
             fontSize: `${snippet.fontSize}px`,
+            "--code-opacity": snippet.opacity,
           } as CSSProperties}
         >
           {snippet.text}
