@@ -7,7 +7,6 @@ import { SlideUp } from "@/components/motion/slide-up";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
 import Wordmark from "@/components/brand/wordmark";
-import TrustLogos from "@/components/trust-logos";
 import FeatureCard from "@/components/feature-card";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
@@ -23,9 +22,6 @@ import {
   Zap,
   ArrowRight,
   CheckCircle,
-  Users,
-  Clock,
-  Award,
 } from "lucide-react";
 
 export default function Home() {
@@ -102,39 +98,6 @@ export default function Home() {
           </div>
         </Section>
       </section>
-
-      {/* Trust Logos */}
-      <Section className="border-y border-slate-200 bg-white py-16">
-        <InViewOnce>
-          <TrustLogos />
-        </InViewOnce>
-      </Section>
-
-      {/* Stats Section */}
-      <Section className="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
-        <InViewOnce>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { number: "120+", label: "Projects delivered", icon: <Rocket className="h-5 w-5" /> },
-              { number: "98%", label: "Client satisfaction", icon: <Award className="h-5 w-5" /> },
-              { number: "50+", label: "Happy clients", icon: <Users className="h-5 w-5" /> },
-              { number: "24hr", label: "Response time", icon: <Clock className="h-5 w-5" /> },
-            ].map((stat, idx) => (
-              <SlideUp key={idx} delay={idx * 0.1}>
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#f3edf9] to-[#e8dcfb] text-[#4f3a72]">
-                    {stat.icon}
-                  </div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-[#604585] via-[#8f6fcc] to-[#c48ef6] bg-clip-text text-transparent">
-                    {stat.number}
-                  </div>
-                  <p className="mt-2 text-sm font-medium text-slate-700">{stat.label}</p>
-                </div>
-              </SlideUp>
-            ))}
-          </div>
-        </InViewOnce>
-      </Section>
 
       {/* What We Do */}
       <Section className="py-24 lg:py-32 bg-white">
