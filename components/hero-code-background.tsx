@@ -43,7 +43,7 @@ function createSnippet(id: number): CodeSnippet {
     top,
     opacity: 0.45 + Math.random() * 0.1,
     delay: Math.random() * 2.5,
-    duration: 3 + Math.random() * 3,
+    duration: 5 + Math.random(),
     fontSize: 10 + Math.floor(Math.random() * 5),
   };
 }
