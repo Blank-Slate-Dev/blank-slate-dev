@@ -1,7 +1,7 @@
 // components/header.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -16,21 +16,35 @@ const navLinks = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const hasTriggeredRef = useRef(false);
+  const [visibilityThreshold, setVisibilityThreshold] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     const heroSection = document.getElementById("hero-section");
-    const heroHeight = heroSection?.getBoundingClientRect().height ?? 0;
-    const threshold = heroHeight * 0.75;
-
-    const handleScroll = () => {
-      if (hasTriggeredRef.current) return;
-
-      if (window.scrollY >= threshold) {
-        hasTriggeredRef.current = true;
-        setIsHeaderVisible(true);
-        window.removeEventListener("scroll", handleScroll);
+    const updateThreshold = () => {
+      const heroHeight = heroSection?.getBoundingClientRect().height ?? 0;
+      if (heroHeight > 0) {
+        setVisibilityThreshold(heroHeight * 0.75);
       }
+    };
+
+    updateThreshold();
+    window.addEventListener("resize", updateThreshold, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", updateThreshold);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (visibilityThreshold === null) {
+        setIsHeaderVisible(false);
+        return;
+      }
+
+      setIsHeaderVisible(window.scrollY >= visibilityThreshold);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -39,12 +53,18 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [visibilityThreshold]);
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: isHeaderVisible ? 1 : 0, y: isHeaderVisible ? 0 : -10 }}
+      initial={{ opacity: 0, y: -10, backgroundColor: "rgba(255, 255, 255, 0)" }}
+      animate={{
+        opacity: isHeaderVisible ? 1 : 0,
+        y: isHeaderVisible ? 0 : -10,
+        backgroundColor: isHeaderVisible
+          ? "rgba(255, 255, 255, 0.8)"
+          : "rgba(255, 255, 255, 0)",
+      }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
       style={{ pointerEvents: isHeaderVisible ? "auto" : "none" }}
