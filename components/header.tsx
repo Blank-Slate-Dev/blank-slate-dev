@@ -1,7 +1,7 @@
 // components/header.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -15,12 +15,39 @@ const navLinks = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  const hasTriggeredRef = useRef(false);
+
+  useEffect(() => {
+    const heroSection = document.getElementById("hero-section");
+    const heroHeight = heroSection?.getBoundingClientRect().height ?? 0;
+    const threshold = heroHeight * 0.75;
+
+    const handleScroll = () => {
+      if (hasTriggeredRef.current) return;
+
+      if (window.scrollY >= threshold) {
+        hasTriggeredRef.current = true;
+        setIsHeaderVisible(true);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: isHeaderVisible ? 1 : 0, y: isHeaderVisible ? 0 : -10 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
+      style={{ pointerEvents: isHeaderVisible ? "auto" : "none" }}
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="relative flex items-center justify-between py-3">
