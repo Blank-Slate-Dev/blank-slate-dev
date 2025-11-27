@@ -6,7 +6,6 @@ import { FadeIn } from "@/components/motion/fade-in";
 import { SlideUp } from "@/components/motion/slide-up";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
-import Wordmark from "@/components/brand/wordmark";
 import FeatureCard from "@/components/feature-card";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
@@ -37,30 +36,19 @@ export default function Home() {
 
         <Section className="relative z-10">
           <div className="relative z-10 mx-auto max-w-6xl text-center">
-            <div className="relative z-10 mx-auto mb-6 inline-flex">
+            <div className="relative z-10 mx-auto mb-10 inline-flex">
               <Image
                 src="/Blank-slate-dev.png"
                 alt="Blank Slate Dev"
                 width={600}
                 height={600}
-                className="relative z-10 h-64 w-auto md:h-80 drop-shadow-[0_0_20px_rgba(0,255,102,0.6)]"
+                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_20px_rgba(0,255,102,0.6)]"
                 priority
               />
             </div>
 
-          <FadeIn>
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-5 py-2.5 shadow-sm">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold text-slate-900">
-                Trusted by 50+ startups worldwide
-              </span>
-            </div>
-          </FadeIn>
-
-          <Wordmark />
-
           <SlideUp delay={0.4}>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <Button
                 size="xl"
                 className="group bg-[#B085FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#B085FF] hover:bg-none hover:shadow-[0_0_22px_rgba(0,255,102,0.6)]"
