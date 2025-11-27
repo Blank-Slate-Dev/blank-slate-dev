@@ -29,12 +29,12 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#1a1a1a] pt-6 pb-24 lg:pb-36">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] pt-6 pb-24 lg:pb-36">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <HeroCodeBackground />
         </div>
 
-        <Section className="relative z-10">
+        <Section className="relative z-10 flex w-full items-center justify-center">
           <div className="relative z-10 mx-auto max-w-6xl text-center">
             <div className="relative z-10 mx-auto mb-10 inline-flex">
               <Image
