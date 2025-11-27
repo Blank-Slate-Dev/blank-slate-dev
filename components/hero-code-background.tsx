@@ -9,7 +9,7 @@ const CODE_SNIPPETS = [
   [
     "export function About() {",
     "  return (",
-    "    <section id=\"about\" className=\"relative z-20\">",
+    '    <section id="about" className="relative z-20">',
     "      <motion.div",
     "        initial={{ opacity: 0, y: 60 }}",
     "        whileInView={{ opacity: 1, y: 0 }}",
@@ -23,15 +23,15 @@ const CODE_SNIPPETS = [
     "];",
   ],
   [
-    "<a href=\"tel:0429187791\">",
-    "  <Phone className=\"h-4 w-4\" />",
+    '<a href="tel:0429187791">',
+    '  <Phone className="h-4 w-4" />',
     "  <span>0429 187 791</span>",
     "</a>",
   ],
   [
     "<Image",
-    "  src=\"/logo.png\"",
-    "  alt=\"LMK Tree Services\"",
+    '  src="/logo.png"',
+    '  alt="LMK Tree Services"',
     "  width={160}",
     "  height={80}",
     "/>",
@@ -74,8 +74,8 @@ const CODE_SNIPPETS = [
     "];",
   ],
   [
-    "<div className=\"flex gap-4\">",
-    "  <Icon className=\"w-6 h-6\" />",
+    '<div className="flex gap-4">',
+    '  <Icon className="w-6 h-6" />',
     "  <h3>{title}</h3>",
     "  <p>{description}</p>",
     "</div>",
@@ -128,7 +128,8 @@ function highlightLine(text: string): React.ReactNode[] {
   const patterns: { regex: RegExp; color: string }[] = [
     // Keywords
     {
-      regex: /^(const|let|var|function|return|if|else|async|await|import|export|default|from|interface|type|useState|useEffect)\b/,
+      regex:
+        /^(const|let|var|function|return|if|else|async|await|import|export|default|from|interface|type|useState|useEffect)\b/,
       color: "#C792EA",
     },
     // Strings (double quotes)
@@ -287,11 +288,10 @@ function CodePatchComponent({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 0.3 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, transition: { duration: 2.5 } }}
       transition={{
         duration: 3,
         ease: "easeInOut",
-        exit: { duration: 2.5 },
       }}
       className="absolute pointer-events-none"
       style={{
@@ -361,6 +361,7 @@ export default function HeroCodeBackground() {
 
     if (availableZones.length === 0) return null;
 
+    // Limit max concurrent patches on screen
     if (4 - availableZones.length >= 2) return null;
 
     const zoneIndex =
@@ -377,7 +378,9 @@ export default function HeroCodeBackground() {
       snippetIndex = Math.floor(Math.random() * CODE_SNIPPETS.length);
     } else {
       snippetIndex =
-        availableSnippets[Math.floor(Math.random() * availableSnippets.length)];
+        availableSnippets[
+          Math.floor(Math.random() * availableSnippets.length)
+        ];
     }
 
     const lines = CODE_SNIPPETS[snippetIndex];
