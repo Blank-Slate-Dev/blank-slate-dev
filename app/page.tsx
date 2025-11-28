@@ -11,6 +11,7 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 import HeroCodeBackground from "@/components/hero-code-background";
 import {
   Code2,
@@ -49,24 +50,37 @@ export default function Home() {
               />
             </div>
 
-              <SlideUp delay={0.4}>
-                <div className="flex flex-wrap items-center justify-center gap-4">
-                  <Button
-                    size="xl"
-                    className="group bg-[#B085FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#B085FF] hover:bg-none hover:shadow-[0_0_22px_rgba(0,255,102,0.6)]"
+            <SlideUp delay={0.4}>
+              <div className="flex justify-center">
+                <div className="group relative inline-flex">
+                  <Link
+                    href="/contact"
+                    className="matrix-button relative inline-flex h-[68px] min-w-[300px] items-center justify-center overflow-hidden rounded-2xl px-12 text-base font-semibold uppercase tracking-[0.26em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 hover:scale-[1.03]"
+                    role="button"
                   >
-                    Start your project
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                  <Button
-                    size="xl"
-                    className="group bg-[#A8C7FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#A8C7FF] hover:bg-none hover:shadow-[0_0_20px_#A8C7FF]"
-                  >
-                    View case studies
-                  </Button>
+                    <span
+                      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(120,255,214,0.24),transparent_38%),radial-gradient(circle_at_82%_8%,rgba(56,189,248,0.22),transparent_34%),linear-gradient(120deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] opacity-60 mix-blend-screen"
+                      aria-hidden
+                    />
+                    <span className="relative z-10">CONTACT A DEV</span>
+                  </Link>
+                  <div className="matrix-code-overlay pointer-events-none absolute left-0 right-0 top-full h-32 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
+                    {Array.from({ length: 16 }).map((_, index) => (
+                      <span
+                        key={index}
+                        className="matrix-line"
+                        style={{
+                          left: `${5 + index * 6}%`,
+                          animationDelay: `${index * 0.08}s`,
+                          animationDuration: `${1.2 + (index % 4) * 0.25}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </SlideUp>
-            </div>
+              </div>
+            </SlideUp>
+          </div>
         </Section>
       </section>
 
