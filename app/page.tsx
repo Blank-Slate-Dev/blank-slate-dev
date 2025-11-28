@@ -55,7 +55,7 @@ export default function Home() {
                 <div className="relative inline-flex">
                   <Link
                     href="/contact"
-                    className="matrix-button relative inline-flex h-14 w-56 items-center justify-center overflow-hidden rounded-[18px] px-6 text-sm font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
+                    className="matrix-button relative inline-flex h-14 w-56 items-center justify-center overflow-hidden rounded-none px-6 text-sm font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
                     role="button"
                   >
                     <span className="relative z-10">CONTACT A DEV</span>
