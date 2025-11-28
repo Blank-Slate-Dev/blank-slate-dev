@@ -20,7 +20,6 @@ import {
   Shield,
   Zap,
   ArrowRight,
-  CheckCircle,
 } from "lucide-react";
 
 export default function Home() {
@@ -50,41 +49,24 @@ export default function Home() {
               />
             </div>
 
-          <SlideUp delay={0.4}>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button
-                size="xl"
-                className="group bg-[#B085FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#B085FF] hover:bg-none hover:shadow-[0_0_22px_rgba(0,255,102,0.6)]"
-              >
-                Start your project
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                size="xl"
-                className="group bg-[#A8C7FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#A8C7FF] hover:bg-none hover:shadow-[0_0_20px_#A8C7FF]"
-              >
-                View case studies
-              </Button>
+              <SlideUp delay={0.4}>
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                  <Button
+                    size="xl"
+                    className="group bg-[#B085FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#B085FF] hover:bg-none hover:shadow-[0_0_22px_rgba(0,255,102,0.6)]"
+                  >
+                    Start your project
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  <Button
+                    size="xl"
+                    className="group bg-[#A8C7FF] bg-none text-white shadow-none transition-all [transition-duration:250ms] ease-in-out hover:scale-[1.04] hover:bg-[#A8C7FF] hover:bg-none hover:shadow-[0_0_20px_#A8C7FF]"
+                  >
+                    View case studies
+                  </Button>
+                </div>
+              </SlideUp>
             </div>
-          </SlideUp>
-
-          <SlideUp delay={0.6}>
-            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-primary" />
-                <span className="text-slate-800 font-medium">2-week sprints</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-primary" />
-                <span className="text-slate-800 font-medium">Fixed pricing</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-primary" />
-                <span className="text-slate-800 font-medium">100% remote</span>
-              </div>
-            </div>
-          </SlideUp>
-          </div>
         </Section>
       </section>
 
