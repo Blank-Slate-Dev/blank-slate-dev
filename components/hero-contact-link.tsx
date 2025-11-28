@@ -10,7 +10,7 @@ export default function HeroContactLink() {
   return (
     <Link
       href="/contact"
-      className="matrix-button relative inline-flex h-7 w-28 items-center justify-center overflow-hidden rounded-none px-3 text-[0.4375rem] font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
+      className="matrix-button relative inline-flex h-[2.0125rem] w-[8.4rem] items-center justify-center overflow-hidden rounded-none px-[0.9rem] text-[0.48rem] font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
       role="button"
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
