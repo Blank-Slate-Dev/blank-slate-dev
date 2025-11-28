@@ -166,7 +166,7 @@ body {
     inset 0 -1px 0 rgba(120, 200, 255, 0.12),
     inset 0 0 0 1px rgba(108, 225, 195, 0.14),
     0 14px 40px rgba(0, 0, 0, 0.65),
-    0 0 40px rgba(56, 189, 248, 0.35);
+    0 0 18px rgba(56, 189, 248, 0.25);
 }
 
 .group:hover .matrix-button,
@@ -177,7 +177,7 @@ body {
     inset 0 -1px 0 rgba(120, 200, 255, 0.18),
     inset 0 0 0 1px rgba(108, 225, 195, 0.2),
     0 16px 44px rgba(0, 0, 0, 0.7),
-    0 0 55px rgba(82, 255, 214, 0.45);
+    0 0 28px rgba(82, 255, 214, 0.32);
 }
 
 .matrix-button::before {
@@ -233,40 +233,31 @@ body {
   mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
 }
 
-.matrix-line {
+.matrix-code-string {
   position: absolute;
-  bottom: -10%;
-  width: 2px;
-  height: 8rem;
-  border-radius: 9999px;
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0), rgba(52, 211, 153, 0.85), rgba(56, 189, 248, 0.8), rgba(56, 189, 248, 0));
-  box-shadow:
-    0 0 12px rgba(56, 189, 248, 0.35),
-    0 12px 18px rgba(0, 0, 0, 0.55);
-  opacity: 0.75;
-  animation: matrix-rain 1.4s linear infinite;
+  top: -6%;
+  transform: translateY(-100%);
+  display: inline-block;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  color: #5cf7b5;
+  text-shadow: 0 0 10px rgba(92, 247, 181, 0.5);
+  letter-spacing: 0.08em;
+  animation: matrix-code-fall linear infinite;
   animation-play-state: paused;
 }
 
-.group:hover .matrix-line,
-.group:focus-within .matrix-line {
+.group:hover .matrix-code-string,
+.group:focus-within .matrix-code-string {
   animation-play-state: running;
 }
 
-@keyframes matrix-rain {
+@keyframes matrix-code-fall {
   0% {
-    transform: translateY(-90%);
-    opacity: 0.05;
-  }
-  25% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.75;
+    transform: translateY(-100%);
   }
   100% {
-    transform: translateY(110%);
-    opacity: 0.05;
+    transform: translateY(100%);
   }
 }
 

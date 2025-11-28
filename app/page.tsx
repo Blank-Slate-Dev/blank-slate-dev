@@ -23,6 +23,38 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+const codeSnippets = [
+  "const x = 42;",
+  "return <div />;",
+  "useEffect(() => {});",
+  "if (ready) run();",
+  "<motion.div />",
+  "Promise.resolve();",
+  "function deploy() {}",
+  "setState(prev => prev+1);",
+  "0x1f3c",
+  "{ data, error }",
+  "await fetch('/api');",
+  "router.push('/contact');",
+  "console.log('init');",
+  "() => setOpen(true)",
+  "type User = { id: string };",
+  "const ref = useRef(null);",
+  "dispatch({ type: 'SAVE' });",
+  "<AnimatePresence />",
+  "import { api } from './client';",
+  "Math.random().toFixed(2);",
+  "while(true){break;}",
+  "JSON.parse(body);",
+  "class Service { run() {} }",
+  "try { connect(); } catch {}",
+  "const memo = useMemo(fn, []);",
+  "const config = { dark: true };",
+  "switch(env){case'prod':break;}",
+  "return () => cleanup();",
+  "<Suspense fallback={null} />",
+];
+
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-black">
@@ -45,7 +77,7 @@ export default function Home() {
                 alt="Blank Slate Dev"
                 width={600}
                 height={600}
-                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_20px_rgba(0,255,102,0.6)]"
+                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_20px_rgba(0,255,102,0.4)]"
                 priority
               />
             </div>
@@ -65,17 +97,26 @@ export default function Home() {
                     <span className="relative z-10">CONTACT A DEV</span>
                   </Link>
                   <div className="matrix-code-overlay pointer-events-none absolute left-0 right-0 top-full h-32 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
-                    {Array.from({ length: 16 }).map((_, index) => (
-                      <span
-                        key={index}
-                        className="matrix-line"
-                        style={{
-                          left: `${5 + index * 6}%`,
-                          animationDelay: `${index * 0.08}s`,
-                          animationDuration: `${1.2 + (index % 4) * 0.25}s`,
-                        }}
-                      />
-                    ))}
+                    {Array.from({ length: 18 }).map((_, index) => {
+                      const snippet = codeSnippets[(index * 5 + 7) % codeSnippets.length];
+                      const duration = 1.6 + (index % 5) * 0.32;
+                      const delay = (index % 9) * 0.08;
+
+                      return (
+                        <span
+                          key={index}
+                          className="matrix-code-string"
+                          style={{
+                            left: `${5 + index * 5}%`,
+                            opacity: 0.45 + (index % 6) * 0.08,
+                            animationDelay: `${delay}s`,
+                            animationDuration: `${duration}s`,
+                          }}
+                        >
+                          {snippet}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
