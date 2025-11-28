@@ -45,7 +45,7 @@ export default function Home() {
                 alt="Blank Slate Dev"
                 width={600}
                 height={600}
-                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_20px_rgba(0,255,102,0.4)]"
+                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_8px_rgba(0,255,102,0.12)]"
                 priority
               />
             </div>
