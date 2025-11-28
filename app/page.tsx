@@ -87,7 +87,7 @@ export default function Home() {
                 <div className="group relative inline-flex">
                   <Link
                     href="/contact"
-                    className="matrix-button relative inline-flex h-[68px] min-w-[300px] items-center justify-center overflow-hidden rounded-2xl px-12 text-base font-semibold uppercase tracking-[0.26em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 hover:scale-[1.03]"
+                    className="matrix-button relative inline-flex h-[41px] min-w-[180px] items-center justify-center overflow-hidden rounded-2xl px-7 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 hover:scale-[1.03]"
                     role="button"
                   >
                     <span
