@@ -23,9 +23,9 @@ const CODE_SNIPPETS = [
     "];",
   ],
   [
-    '<a href="tel:0429187791">',
+    '<a href="tel:04782 219 342">',
     '  <Phone className="h-4 w-4" />',
-    "  <span>0429 187 791</span>",
+    "  <span>0455 023 991</span>",
     "</a>",
   ],
   [
