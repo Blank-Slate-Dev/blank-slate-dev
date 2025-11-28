@@ -11,8 +11,8 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import Link from "next/link";
 import HeroCodeBackground from "@/components/hero-code-background";
+import HeroContactLink from "@/components/hero-contact-link";
 import {
   Code2,
   Sparkles,
@@ -53,13 +53,7 @@ export default function Home() {
             <SlideUp delay={0.4}>
               <div className="flex justify-center">
                 <div className="relative inline-flex">
-                  <Link
-                    href="/contact"
-                    className="matrix-button relative inline-flex h-14 w-56 items-center justify-center overflow-hidden rounded-none px-6 text-sm font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
-                    role="button"
-                  >
-                    <span className="relative z-10">CONTACT A DEV</span>
-                  </Link>
+                  <HeroContactLink />
                 </div>
               </div>
             </SlideUp>
