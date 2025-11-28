@@ -57,17 +57,9 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -10, backgroundColor: "rgba(255, 255, 255, 0)" }}
-      animate={{
-        opacity: isHeaderVisible ? 1 : 0,
-        y: isHeaderVisible ? 0 : -10,
-        backgroundColor: isHeaderVisible
-          ? "rgba(255, 255, 255, 0.8)"
-          : "rgba(255, 255, 255, 0)",
-      }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="sticky top-0 z-50 border-b border-[hsl(var(--border))] bg-white/80 backdrop-blur-md"
-      style={{ pointerEvents: isHeaderVisible ? "auto" : "none" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0 }}
+      className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-none border-none"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="relative flex items-center justify-between py-3">
