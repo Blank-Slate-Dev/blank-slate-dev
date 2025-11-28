@@ -23,9 +23,9 @@ const CODE_SNIPPETS = [
     "];",
   ],
   [
-    '<a href="tel:04782 219 342">',
+    '<a href="mailto:hello@example.com">',
     '  <Phone className="h-4 w-4" />',
-    "  <span>0455 023 991</span>",
+    "  <span>Contact info removed</span>",
     "</a>",
   ],
   [
