@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 // Real code snippets from the actual project files
 const CODE_SNIPPETS = [
@@ -104,16 +104,31 @@ interface CodePatch {
   x: number;
   y: number;
   typingSpeed: number;
-  zoneIndex: number;
+  slotIndex: number;
+  snippetIndex: number;
 }
 
-// Fixed zones - adjusted to keep containers on screen
-const ZONES = [
+interface SlotConfig {
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
+}
+
+// Six fixed slots (3 per side) to keep cards visible and away from the logo
+const SLOTS: SlotConfig[] = [
   { xMin: 2, xMax: 8, yMin: 8, yMax: 18 },
-  { xMin: 65, xMax: 72, yMin: 8, yMax: 18 },
+  { xMin: 2, xMax: 8, yMin: 38, yMax: 48 },
   { xMin: 2, xMax: 8, yMin: 72, yMax: 82 },
+  { xMin: 65, xMax: 72, yMin: 8, yMax: 18 },
+  { xMin: 65, xMax: 72, yMin: 38, yMax: 48 },
   { xMin: 65, xMax: 72, yMin: 72, yMax: 82 },
 ];
+
+const TARGET_OPACITY = 0.32;
+const FADE_IN_DURATION = 0.5;
+const FADE_OUT_DURATION = 0.7;
+const HOLD_DURATION = 3500;
 
 // Syntax highlighting function - returns array of styled spans
 function highlightLine(text: string): React.ReactNode[] {
@@ -248,15 +263,18 @@ function CompletedLine({ text }: { text: string }) {
 
 function CodePatchComponent({
   patch,
-  onComplete,
+  onCycle,
 }: {
   patch: CodePatch;
-  onComplete: () => void;
+  onCycle: (patch: CodePatch) => void;
 }) {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [completedLines, setCompletedLines] = useState<string[]>([]);
   const [isFullyComplete, setIsFullyComplete] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const totalLines = patch.lines.length;
+  const holdTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const fadeOutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleLineComplete = useCallback(() => {
     const justCompletedLine = patch.lines[currentLineIndex];
@@ -273,12 +291,41 @@ function CodePatchComponent({
   useEffect(() => {
     if (!isFullyComplete) return;
 
-    const timer = setTimeout(() => {
-      onComplete();
-    }, 4000);
+    holdTimeoutRef.current = setTimeout(() => {
+      setIsFadingOut(true);
+    }, HOLD_DURATION);
 
-    return () => clearTimeout(timer);
-  }, [isFullyComplete, onComplete]);
+    return () => {
+      if (holdTimeoutRef.current) {
+        clearTimeout(holdTimeoutRef.current);
+      }
+    };
+  }, [isFullyComplete]);
+
+  useEffect(() => {
+    if (!isFadingOut) return;
+
+    fadeOutTimeoutRef.current = setTimeout(() => {
+      onCycle(patch);
+    }, FADE_OUT_DURATION * 1000 + 20);
+
+    return () => {
+      if (fadeOutTimeoutRef.current) {
+        clearTimeout(fadeOutTimeoutRef.current);
+      }
+    };
+  }, [isFadingOut, onCycle, patch]);
+
+  useEffect(() => {
+    return () => {
+      if (holdTimeoutRef.current) {
+        clearTimeout(holdTimeoutRef.current);
+      }
+      if (fadeOutTimeoutRef.current) {
+        clearTimeout(fadeOutTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const visibleLineCount = isFullyComplete
     ? completedLines.length
@@ -287,12 +334,12 @@ function CodePatchComponent({
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.3 }}
-      exit={{ opacity: 0, transition: { duration: 2.5 } }}
-      transition={{
-        duration: 3,
-        ease: "easeInOut",
-      }}
+      animate={isFadingOut ? { opacity: 0 } : { opacity: TARGET_OPACITY }}
+      transition={
+        isFadingOut
+          ? { duration: FADE_OUT_DURATION, ease: "easeInOut" }
+          : { duration: FADE_IN_DURATION, ease: "easeOut" }
+      }
       className="absolute pointer-events-none"
       style={{
         left: `${patch.x}%`,
@@ -350,86 +397,55 @@ function CodePatchComponent({
 
 export default function HeroCodeBackground() {
   const [patches, setPatches] = useState<CodePatch[]>([]);
-  const occupiedZones = useRef<Set<number>>(new Set());
-  const usedSnippets = useRef<Set<number>>(new Set());
   const patchCounter = useRef(0);
+  const activeSnippetIndices = useRef<Set<number>>(new Set());
 
-  const createPatch = useCallback((): CodePatch | null => {
-    const availableZones = ZONES.map((_, idx) => idx).filter(
-      (idx) => !occupiedZones.current.has(idx)
-    );
+  const createPatchForSlot = useCallback(
+    (slotIndex: number): CodePatch => {
+      const availableSnippets = CODE_SNIPPETS.map((_, idx) => idx).filter(
+        (idx) => !activeSnippetIndices.current.has(idx)
+      );
 
-    if (availableZones.length === 0) return null;
-
-    // Limit max concurrent patches on screen
-    if (4 - availableZones.length >= 2) return null;
-
-    const zoneIndex =
-      availableZones[Math.floor(Math.random() * availableZones.length)];
-    const zone = ZONES[zoneIndex];
-
-    let snippetIndex: number;
-    const availableSnippets = CODE_SNIPPETS.map((_, idx) => idx).filter(
-      (idx) => !usedSnippets.current.has(idx)
-    );
-
-    if (availableSnippets.length === 0) {
-      usedSnippets.current.clear();
-      snippetIndex = Math.floor(Math.random() * CODE_SNIPPETS.length);
-    } else {
-      snippetIndex =
+      const snippetIndex =
         availableSnippets[
-          Math.floor(Math.random() * availableSnippets.length)
-        ];
-    }
+          Math.floor(Math.random() * Math.max(1, availableSnippets.length))
+        ] ?? Math.floor(Math.random() * CODE_SNIPPETS.length);
 
-    const lines = CODE_SNIPPETS[snippetIndex];
+      activeSnippetIndices.current.add(snippetIndex);
 
-    usedSnippets.current.add(snippetIndex);
-    occupiedZones.current.add(zoneIndex);
+      const slot = SLOTS[slotIndex];
 
-    return {
-      id: patchCounter.current++,
-      lines,
-      x: zone.xMin + Math.random() * (zone.xMax - zone.xMin),
-      y: zone.yMin + Math.random() * (zone.yMax - zone.yMin),
-      typingSpeed: 50 + Math.random() * 30,
-      zoneIndex,
-    };
-  }, []);
+      return {
+        id: patchCounter.current++,
+        lines: CODE_SNIPPETS[snippetIndex],
+        x: slot.xMin + Math.random() * (slot.xMax - slot.xMin),
+        y: slot.yMin + Math.random() * (slot.yMax - slot.yMin),
+        typingSpeed: 50 + Math.random() * 30,
+        slotIndex,
+        snippetIndex,
+      };
+    },
+    []
+  );
 
-  const removePatch = useCallback((id: number, zoneIndex: number) => {
-    occupiedZones.current.delete(zoneIndex);
-    setPatches((prev) => prev.filter((p) => p.id !== id));
-  }, []);
+  const cyclePatch = useCallback(
+    (patch: CodePatch) => {
+      activeSnippetIndices.current.delete(patch.snippetIndex);
 
-  useEffect(() => {
-    const delays = [500, 3500];
-    const timers: NodeJS.Timeout[] = [];
-
-    delays.forEach((delay) => {
-      const timer = setTimeout(() => {
-        const patch = createPatch();
-        if (patch) {
-          setPatches((prev) => [...prev, patch]);
-        }
-      }, delay);
-      timers.push(timer);
-    });
-
-    return () => timers.forEach((t) => clearTimeout(t));
-  }, [createPatch]);
+      setPatches((prev) =>
+        prev.map((existing) =>
+          existing.id === patch.id
+            ? createPatchForSlot(patch.slotIndex)
+            : existing
+        )
+      );
+    },
+    [createPatchForSlot]
+  );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const patch = createPatch();
-      if (patch) {
-        setPatches((prev) => [...prev, patch]);
-      }
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, [createPatch]);
+    setPatches(SLOTS.map((_, idx) => createPatchForSlot(idx)));
+  }, [createPatchForSlot]);
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -437,15 +453,13 @@ export default function HeroCodeBackground() {
       <div className="absolute inset-0 bg-black" />
 
       {/* Code patches */}
-      <AnimatePresence>
-        {patches.map((patch) => (
-          <CodePatchComponent
-            key={patch.id}
-            patch={patch}
-            onComplete={() => removePatch(patch.id, patch.zoneIndex)}
-          />
-        ))}
-      </AnimatePresence>
+      {patches.map((patch) => (
+        <CodePatchComponent
+          key={patch.id}
+          patch={patch}
+          onCycle={cyclePatch}
+        />
+      ))}
 
       {/* Subtle vignette */}
       <div
