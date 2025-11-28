@@ -157,10 +157,18 @@ body {
 .matrix-button {
   position: relative;
   isolation: isolate;
-  background: #a855ff;
+  background:
+    linear-gradient(
+      180deg,
+      #32105e 0%,
+      #40227c 34%,
+      #5b21b6 56%,
+      #301056 100%
+    );
   border: 1px solid rgba(168, 85, 255, 0.4);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 10px 20px rgba(255, 255, 255, 0.05),
     0 10px 40px rgba(0, 0, 0, 0.7),
     0 0 30px rgba(168, 85, 255, 0.12),
     0 0 28px rgba(34, 197, 94, 0.12);
@@ -205,10 +213,18 @@ body {
 .matrix-button:hover,
 .matrix-button:focus-visible {
   transform: scale(1.03);
-  background: #a855ff;
+  background:
+    linear-gradient(
+      180deg,
+      #3a0f73 0%,
+      #4b21a0 36%,
+      #6b21b8 56%,
+      #34105f 100%
+    );
   color: #ffffff;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 10px 22px rgba(255, 255, 255, 0.06),
     0 12px 44px rgba(0, 0, 0, 0.78),
     0 0 36px rgba(168, 85, 255, 0.18),
     0 0 32px rgba(34, 197, 94, 0.18);
