@@ -157,64 +157,87 @@ body {
 .matrix-button {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(135deg, rgba(11, 27, 26, 0.8), rgba(6, 11, 24, 0.82));
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(156, 255, 224, 0.4);
+  background: radial-gradient(circle at 18% 12%, rgba(59, 39, 95, 0.14), transparent 38%),
+    linear-gradient(135deg, rgba(59, 39, 95, 0.45), rgba(5, 56, 40, 0.45));
+  background-color: #05060b;
+  border: 1px solid rgba(168, 85, 255, 0.4);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -1px 0 rgba(120, 200, 255, 0.12),
-    inset 0 0 0 1px rgba(108, 225, 195, 0.14),
-    0 14px 40px rgba(0, 0, 0, 0.65),
-    0 0 18px rgba(56, 189, 248, 0.25);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(168, 85, 255, 0.12),
+    0 0 28px rgba(34, 197, 94, 0.12);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    background 220ms ease;
 }
 
 .matrix-button::before {
   content: "";
   position: absolute;
-  inset: -1px;
+  inset: -2px;
   border-radius: inherit;
-  background:
-    radial-gradient(140% 90% at 50% 4%, rgba(255, 255, 255, 0.26), transparent 55%),
-    linear-gradient(120deg, rgba(66, 255, 210, 0.24), rgba(114, 190, 255, 0.14));
-  opacity: 0.95;
-  z-index: 0;
+  padding: 2px;
+  background: conic-gradient(from 140deg, #a855ff, #22c55e, #a855ff);
+  background-size: 200% 200%;
+  animation: ring-flow 2s ease-in-out infinite;
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 12px rgba(168, 85, 255, 0.25)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.9;
   pointer-events: none;
+  z-index: 0;
 }
 
 .matrix-button::after {
   content: "";
   position: absolute;
-  top: -120%;
-  left: -40%;
-  width: 70%;
-  height: 320%;
-  border-radius: 32px;
-  background: linear-gradient(120deg, transparent 35%, rgba(190, 255, 230, 0.24), transparent 65%);
-  transform: rotate(18deg);
-  mix-blend-mode: screen;
-  opacity: 0.65;
-  z-index: 0;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  opacity: 0.25;
   pointer-events: none;
-  animation: matrix-sheen 6s ease-in-out infinite;
+  z-index: 0;
+  transition: opacity 220ms ease;
 }
 
-@keyframes matrix-sheen {
+.matrix-button:hover,
+.matrix-button:focus-visible {
+  transform: scale(1.03);
+  background: radial-gradient(circle at 18% 12%, rgba(94, 67, 140, 0.2), transparent 40%),
+    linear-gradient(135deg, rgba(82, 48, 128, 0.65), rgba(7, 83, 58, 0.65));
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 44px rgba(0, 0, 0, 0.78),
+    0 0 36px rgba(168, 85, 255, 0.18),
+    0 0 32px rgba(34, 197, 94, 0.18);
+}
+
+.matrix-button:hover::before,
+.matrix-button:focus-visible::before {
+  animation-play-state: running;
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(168, 85, 255, 0.32)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.32));
+}
+
+.matrix-button:hover::after,
+.matrix-button:focus-visible::after {
+  opacity: 0.36;
+}
+
+@keyframes ring-flow {
   0% {
-    transform: translateX(0) rotate(18deg);
-    opacity: 0.2;
+    background-position: 0% 50%;
   }
-  35% {
-    transform: translateX(140%) rotate(18deg);
-    opacity: 0.85;
-  }
-  60% {
-    transform: translateX(260%) rotate(18deg);
-    opacity: 0.08;
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateX(260%) rotate(18deg);
-    opacity: 0.08;
+    background-position: 0% 50%;
   }
 }
 
