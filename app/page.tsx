@@ -55,13 +55,9 @@ export default function Home() {
                 <div className="relative inline-flex">
                   <Link
                     href="/contact"
-                    className="matrix-button relative inline-flex h-[41px] min-w-[180px] items-center justify-center overflow-hidden rounded-2xl px-7 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                    className="matrix-button relative inline-flex h-14 w-56 items-center justify-center overflow-hidden rounded-[18px] px-6 text-sm font-semibold uppercase tracking-[0.24em] text-[#f5f7ff] transition duration-200 ease-out focus-visible:outline-none"
                     role="button"
                   >
-                    <span
-                      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(120,255,214,0.24),transparent_38%),radial-gradient(circle_at_82%_8%,rgba(56,189,248,0.22),transparent_34%),linear-gradient(120deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] opacity-60 mix-blend-screen"
-                      aria-hidden
-                    />
                     <span className="relative z-10">CONTACT A DEV</span>
                   </Link>
                 </div>
