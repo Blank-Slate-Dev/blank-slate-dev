@@ -1,9 +1,8 @@
-// components/header.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -15,109 +14,96 @@ const navLinks = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [visibilityThreshold, setVisibilityThreshold] = useState<number | null>(
-    null,
-  );
-
-  useEffect(() => {
-    const heroSection = document.getElementById("hero-section");
-    const updateThreshold = () => {
-      const heroHeight = heroSection?.getBoundingClientRect().height ?? 0;
-      if (heroHeight > 0) {
-        setVisibilityThreshold(heroHeight * 0.75);
-      }
-    };
-
-    updateThreshold();
-    window.addEventListener("resize", updateThreshold, { passive: true });
-
-    return () => {
-      window.removeEventListener("resize", updateThreshold);
-    };
-  }, []);
+  const [isVisible, setIsVisible] = useState(false);
+  const controls = useAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (visibilityThreshold === null) {
-        setIsHeaderVisible(false);
-        return;
-      }
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight || 1;
 
-      setIsHeaderVisible(window.scrollY >= visibilityThreshold);
+      // Show the header after the user has scrolled ~3/4 of the first screen
+      const threshold = viewportHeight * 0.75;
+      const shouldBeVisible = scrollY >= threshold;
+
+      setIsVisible(shouldBeVisible);
+
+      controls.start({
+        opacity: shouldBeVisible ? 1 : 0,
+        y: shouldBeVisible ? 0 : -24,
+        transition: { duration: 0.35, ease: "easeOut" },
+      });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once on mount so the header state matches initial scroll position
     handleScroll();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [visibilityThreshold]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [controls]);
 
   return (
     <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 0 }}
-      className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-none border-none"
+      initial={{ opacity: 0, y: -24 }}
+      animate={controls}
+      // Fixed header, dark translucent background, NO white bar
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md"
+      // When invisible, don't intercept clicks on the hero section
+      style={{ pointerEvents: isVisible ? "auto" : "none" }}
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="relative flex items-center justify-between py-3">
-          {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="Home">
-            <span className="sr-only">Blank Slate Dev</span>
-          </Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-8 lg:px-10">
+        {/* Left: wordmark / logo text */}
+        <Link href="/" className="flex items-center gap-2">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100">
+            Blank Slate Dev
+          </span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="absolute left-1/2 hidden -translate-x-1/2 md:flex md:gap-8">
+        {/* Desktop navigation */}
+        <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-200 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile menu toggle */}
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/60 p-2 text-zinc-100 shadow-sm backdrop-blur md:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Menu className="h-5 w-5" aria-hidden="true" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile nav panel */}
+      {isMobileMenuOpen && (
+        <div className="border-t border-white/10 bg-black/90 px-6 pb-4 pt-2 text-sm text-zinc-100 shadow-lg backdrop-blur md:hidden">
+          <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-slate-800 transition-colors hover:text-primary"
+                className="block rounded-md px-1 py-1.5 transition-colors hover:bg-white/5"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-slate-900" />
-            ) : (
-              <Menu className="h-6 w-6 text-slate-900" />
-            )}
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden"
-          >
-            <nav className="flex flex-col gap-4 pb-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-slate-800 transition-colors hover:text-primary"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </div>
+      )}
     </motion.header>
   );
 }
