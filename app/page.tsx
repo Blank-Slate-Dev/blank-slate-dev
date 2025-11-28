@@ -23,38 +23,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const codeSnippets = [
-  "const x = 42;",
-  "return <div />;",
-  "useEffect(() => {});",
-  "if (ready) run();",
-  "<motion.div />",
-  "Promise.resolve();",
-  "function deploy() {}",
-  "setState(prev => prev+1);",
-  "0x1f3c",
-  "{ data, error }",
-  "await fetch('/api');",
-  "router.push('/contact');",
-  "console.log('init');",
-  "() => setOpen(true)",
-  "type User = { id: string };",
-  "const ref = useRef(null);",
-  "dispatch({ type: 'SAVE' });",
-  "<AnimatePresence />",
-  "import { api } from './client';",
-  "Math.random().toFixed(2);",
-  "while(true){break;}",
-  "JSON.parse(body);",
-  "class Service { run() {} }",
-  "try { connect(); } catch {}",
-  "const memo = useMemo(fn, []);",
-  "const config = { dark: true };",
-  "switch(env){case'prod':break;}",
-  "return () => cleanup();",
-  "<Suspense fallback={null} />",
-];
-
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-black">
@@ -84,10 +52,10 @@ export default function Home() {
 
             <SlideUp delay={0.4}>
               <div className="flex justify-center">
-                <div className="group relative inline-flex">
+                <div className="relative inline-flex">
                   <Link
                     href="/contact"
-                    className="matrix-button relative inline-flex h-[41px] min-w-[180px] items-center justify-center overflow-hidden rounded-2xl px-7 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent hover:-translate-y-0.5 hover:scale-[1.03]"
+                    className="matrix-button relative inline-flex h-[41px] min-w-[180px] items-center justify-center overflow-hidden rounded-2xl px-7 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-white transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8fffd4]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                     role="button"
                   >
                     <span
@@ -96,28 +64,6 @@ export default function Home() {
                     />
                     <span className="relative z-10">CONTACT A DEV</span>
                   </Link>
-                  <div className="matrix-code-overlay pointer-events-none absolute left-0 right-0 top-full h-32 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
-                    {Array.from({ length: 18 }).map((_, index) => {
-                      const snippet = codeSnippets[(index * 5 + 7) % codeSnippets.length];
-                      const duration = 1.6 + (index % 5) * 0.32;
-                      const delay = (index % 9) * 0.08;
-
-                      return (
-                        <span
-                          key={index}
-                          className="matrix-code-string"
-                          style={{
-                            left: `${5 + index * 5}%`,
-                            opacity: 0.45 + (index % 6) * 0.08,
-                            animationDelay: `${delay}s`,
-                            animationDuration: `${duration}s`,
-                          }}
-                        >
-                          {snippet}
-                        </span>
-                      );
-                    })}
-                  </div>
                 </div>
               </div>
             </SlideUp>
