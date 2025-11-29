@@ -121,9 +121,14 @@ export default function Home() {
         {/* Services – What we do best */}
         <section
           id="services"
-          className="relative bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-[#050505] py-20 sm:py-24 lg:py-28"
+          className="relative overflow-hidden bg-[#050505] py-20 sm:py-24 lg:py-28"
         >
-          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[linear-gradient(to_bottom,#0a0a0a_0%,#0a0a0a_40%,#050505_100%)]"
+          />
+
+          <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
             <motion.div
               className="flex flex-col items-center gap-4 text-center"
               variants={servicesHeaderVariants}
