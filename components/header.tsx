@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Logo from "./logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -53,10 +54,9 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-8 lg:px-10">
         {/* Left: wordmark / logo text */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100">
-            Blank Slate Dev
-          </span>
+        <Link href="/" className="flex items-center gap-3">
+          <Logo width={120} height={120} className="h-10 w-auto drop-shadow" />
+          <span className="sr-only">Blank Slate Dev</span>
         </Link>
 
         {/* Desktop navigation */}

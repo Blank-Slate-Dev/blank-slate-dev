@@ -30,8 +30,8 @@ const CODE_SNIPPETS = [
   ],
   [
     "<Image",
-    '  src="/logo.png"',
-    '  alt="LMK Tree Services"',
+    '  src="/BlankSlateLOGO.png"',
+    '  alt="Blank Slate Dev logo"',
     "  width={160}",
     "  height={80}",
     "/>",
