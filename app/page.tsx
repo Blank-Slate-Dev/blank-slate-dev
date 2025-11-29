@@ -62,7 +62,7 @@ const serviceCardVariants = {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-[#0a0a0a]">
       <Header />
 
       {/* Hero Section */}
@@ -101,7 +101,7 @@ export default function Home() {
       {/* Services – What we do best */}
       <section
         id="services"
-        className="relative bg-[#050505] py-20 sm:py-24 lg:py-28"
+        className="relative bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           {/* Section label */}
@@ -268,17 +268,17 @@ export default function Home() {
       </section>
 
       {/* Process */}
-      <Section className="bg-gradient-to-b from-[#f3edf9] to-white py-24 lg:py-32">
+      <Section className="bg-[#0a0a0a] py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-4 py-2 text-sm font-semibold text-slate-800">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/90">
                 PROCESS
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 How we work
               </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-700">
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
                 A battle-tested process refined over 120+ successful projects.
               </p>
             </FadeIn>
@@ -318,10 +318,10 @@ export default function Home() {
                     <div className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-white font-bold text-xl shadow-lg mb-6`}>
                       {item.step}
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                    <h3 className="text-2xl font-bold text-white mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                    <p className="text-slate-300 leading-relaxed">{item.description}</p>
                   </div>
                 </SlideUp>
               ))}
@@ -331,17 +331,17 @@ export default function Home() {
       </Section>
 
       {/* Work Preview */}
-      <Section className="py-24 lg:py-32 bg-white">
+      <Section className="py-24 lg:py-32 bg-[#0a0a0a]">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/90">
                 PORTFOLIO
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 Recent work
               </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
                 A selection of projects we're proud to showcase.
               </p>
             </FadeIn>
@@ -370,26 +370,26 @@ export default function Home() {
             ].map((project, idx) => (
               <Card
                 key={idx}
-                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                className="group overflow-hidden border-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.6)] hover:shadow-[0_18px_60px_rgba(0,0,0,0.75)] transition-all duration-300 cursor-pointer"
               >
                 <div className={`aspect-video bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Case Study</span>
+                    <div className="bg-black/70 border border-white/10 backdrop-blur-sm rounded-lg p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-xs font-bold text-white uppercase tracking-wider">Case Study</span>
                     </div>
                   </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="mt-3 text-slate-600 leading-relaxed">{project.description}</p>
+                  <p className="mt-3 text-slate-300 leading-relaxed">{project.description}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-1.5 text-xs font-semibold text-slate-700"
+                        className="rounded-full bg-gradient-to-r from-white/10 to-white/5 px-4 py-1.5 text-xs font-semibold text-white/90"
                       >
                         {tag}
                       </span>
@@ -412,14 +412,14 @@ export default function Home() {
       </Section>
 
       {/* Testimonials */}
-      <Section className="bg-gradient-to-b from-[#f3edf9] to-white py-24 lg:py-32">
+      <Section className="bg-[#0a0a0a] py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f3edf9] to-[#e8dcfb] px-4 py-2 text-sm font-semibold text-slate-800">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/90">
                 TESTIMONIALS
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 Client success stories
               </h2>
             </FadeIn>
@@ -449,7 +449,7 @@ export default function Home() {
                 gradient: "from-orange-500 to-pink-600",
               },
             ].map((testimonial, idx) => (
-              <Card key={idx} className="relative overflow-hidden border-0 shadow-lg p-8">
+              <Card key={idx} className="relative overflow-hidden border-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.6)] p-8">
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient}`} />
                 <div className="flex flex-col h-full">
                   <div className="mb-6">
@@ -457,12 +457,12 @@ export default function Home() {
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
-                  <p className="flex-grow text-lg text-slate-700 leading-relaxed italic">
+                  <p className="flex-grow text-lg text-slate-200 leading-relaxed italic">
                     "{testimonial.quote}"
                   </p>
-                  <div className="mt-8 pt-6 border-t border-slate-100">
-                    <p className="font-bold text-slate-900">{testimonial.author}</p>
-                    <p className="text-sm text-slate-600">
+                  <div className="mt-8 pt-6 border-t border-white/10">
+                    <p className="font-bold text-white">{testimonial.author}</p>
+                    <p className="text-sm text-slate-300">
                       {testimonial.role} • {testimonial.company}
                     </p>
                   </div>

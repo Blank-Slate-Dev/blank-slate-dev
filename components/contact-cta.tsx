@@ -26,8 +26,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <Section className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f3edf9] via-[#e8dcfb] to-[#f6f2fb]" />
+    <Section className="py-32 relative overflow-hidden bg-[#0a0a0a]">
       
       <FadeIn>
         <motion.div 
@@ -92,52 +91,52 @@ export default function ContactCTA() {
 
                     <form onSubmit={handleSubmit} className="space-y-5 mt-4">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label htmlFor="name" className="block text-sm font-semibold text-slate-100 mb-2">
                           Your name
                         </label>
                         <input
                           type="text"
                           id="name"
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-white/40 focus:outline-none focus:ring-4 focus:ring-white/10 transition-all"
                           placeholder="John Doe"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label htmlFor="email" className="block text-sm font-semibold text-slate-100 mb-2">
                           Email address
                         </label>
                         <input
                           type="email"
                           id="email"
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-white/40 focus:outline-none focus:ring-4 focus:ring-white/10 transition-all"
                           placeholder="john@company.com"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label htmlFor="company" className="block text-sm font-semibold text-slate-100 mb-2">
                           Company (optional)
                         </label>
                         <input
                           type="text"
                           id="company"
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-white/40 focus:outline-none focus:ring-4 focus:ring-white/10 transition-all"
                           placeholder="Acme Inc."
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label htmlFor="message" className="block text-sm font-semibold text-slate-100 mb-2">
                           Project details
                         </label>
                         <textarea
                           id="message"
                           rows={4}
                           required
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-[hsl(var(--primary))] focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all resize-none"
+                          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 focus:border-white/40 focus:outline-none focus:ring-4 focus:ring-white/10 transition-all resize-none"
                           placeholder="Tell us about your project, timeline, and budget..."
                         />
                       </div>
