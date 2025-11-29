@@ -121,10 +121,9 @@ export default function Home() {
         {/* Services – What we do best */}
         <section
           id="services"
-          className="relative bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
+          className="relative bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-[#050505] py-20 sm:py-24 lg:py-28"
         >
-          <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
-            {/* Section label */}
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <motion.div
               className="flex flex-col items-center gap-4 text-center"
               variants={servicesHeaderVariants}
@@ -144,14 +143,13 @@ export default function Home() {
               </p>
             </motion.div>
 
-          {/* Services grid */}
-          <motion.div
-            className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3"
-            variants={servicesGridVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.35 }}
-          >
+            <motion.div
+              className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3"
+              variants={servicesGridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.35 }}
+            >
             {/* Full-Stack Development */}
             <motion.article
               variants={serviceCardVariants}
