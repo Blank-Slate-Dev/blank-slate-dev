@@ -63,29 +63,29 @@ export default function Home() {
       {/* Services – What we do best */}
       <section
         id="services"
-        className="relative border-t border-white/5 bg-[#050505] py-20 sm:py-24 lg:py-28"
+        className="relative border-t border-emerald-500/10 bg-[#050505] py-20 sm:py-24 lg:py-28"
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
           {/* Section label */}
           <div className="flex flex-col items-center gap-4 text-center">
-            <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-emerald-300">
+            <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
               Services
             </span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               What we do best
             </h2>
-            <p className="mt-4 max-w-2xl text-balance text-sm sm:text-base text-slate-300/80">
-              Full-stack development expertise combined with world-class design to build
-              products users love. Dark, fast, and obsessively engineered.
+            <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
+              Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
+              obsessively engineered experiences that feel native from day one.
             </p>
           </div>
 
           {/* Services grid */}
-          <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
             {/* Full-Stack Development */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-300 text-white shadow-[0_0_25px_rgba(52,211,153,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#54e3b9] text-white shadow-[0_0_25px_rgba(52,211,153,0.45)]">
                   <Code2 className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -93,18 +93,18 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                React, Next.js, Node.js, TypeScript. We build scalable, secure applications
-                with battle-tested modern stacks.
+                Next.js, Node, TypeScript, databases tuned for scale. We architect resilient
+                products that stay fast under real traffic.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Clean architecture • API-first design • High-performance UIs
               </p>
             </article>
 
             {/* UI/UX Design */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_25px_rgba(56,189,248,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_26px_rgba(56,189,248,0.45)]">
                   <Layout className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -112,18 +112,18 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                Intuitive, conversion-focused interfaces that feel fast and effortless,
-                tailored for your users and your brand.
+                Product strategy to pixel-perfect delivery. We craft interfaces that stay
+                sharp in dark mode and convert without friction.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Wireframes to polish • Design systems • Interaction design
               </p>
             </article>
 
             {/* Performance Optimization */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-orange-400 text-white shadow-[0_0_25px_rgba(251,146,60,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#38bdf8] text-white shadow-[0_0_26px_rgba(56,189,248,0.38)]">
                   <Gauge className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -131,18 +131,18 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                Lighthouse-friendly, Core Web Vitals obsessed. We tune your app for
-                lightning-fast loads and smooth interactions.
+                Core Web Vitals, bundle budgets, edge delivery, and profiling to shave
+                milliseconds. We keep your experience laser fast.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Profiling • Caching • Edge delivery • SEO-aware performance
               </p>
             </article>
 
             {/* API Development */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_25px_rgba(34,211,238,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_26px_rgba(34,211,238,0.42)]">
                   <Braces className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -150,18 +150,18 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                RESTful and GraphQL APIs, microservices, and clean integrations with
-                third-party platforms and internal tools.
+                REST, GraphQL, queues, and event-driven patterns with strong contracts and
+                observability baked in from the start.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Robust contracts • Versioning • Observability
               </p>
             </article>
 
             {/* Security & Compliance */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_26px_rgba(168,85,247,0.45)]">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -169,18 +169,18 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                Enterprise-grade security practices, sane defaults, and compliance-minded
-                architectures from day one.
+                Secure defaults, least-privilege access, audits, and encryption-first
+                pipelines so you launch with confidence.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Auth &amp; permissions • Hardening • Auditing
               </p>
             </article>
 
             {/* DevOps & Deployment */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
               <div className="flex items-center gap-4">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_25px_rgba(59,130,246,0.5)]">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_26px_rgba(59,130,246,0.4)]">
                   <ServerCog className="h-5 w-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white sm:text-lg">
@@ -188,10 +188,10 @@ export default function Home() {
                 </h3>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                CI/CD pipelines, cloud infrastructure, observability, and reliable
-                deployments so your product just stays online.
+                CI/CD automation, zero-downtime releases, telemetry, and recovery plans.
+                Your stack stays observable and ship-ready.
               </p>
-              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Pipelines • Monitoring • 24/7-ready setups
               </p>
             </article>
