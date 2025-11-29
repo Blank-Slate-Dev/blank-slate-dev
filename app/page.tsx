@@ -6,7 +6,6 @@ import { FadeIn } from "@/components/motion/fade-in";
 import { SlideUp } from "@/components/motion/slide-up";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
-import FeatureCard from "@/components/feature-card";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -14,13 +13,13 @@ import Image from "next/image";
 import HeroCodeBackground from "@/components/hero-code-background";
 import HeroContactLink from "@/components/hero-contact-link";
 import {
-  Code2,
-  Sparkles,
-  Rocket,
-  Blocks,
-  Shield,
-  Zap,
   ArrowRight,
+  Braces,
+  Code2,
+  Gauge,
+  Layout,
+  ServerCog,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function Home() {
@@ -61,63 +60,144 @@ export default function Home() {
         </Section>
       </section>
 
-      {/* What We Do */}
-      <Section className="py-24 lg:py-32 bg-white">
-        <InViewOnce>
-          <div className="text-center">
-            <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
-                SERVICES
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                What we do best
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
-                Full-stack development expertise combined with world-class design to build products users love.
-              </p>
-            </FadeIn>
+      {/* Services – What we do best */}
+      <section
+        id="services"
+        className="relative border-t border-white/5 bg-[#050505] py-20 sm:py-24 lg:py-28"
+      >
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          {/* Section label */}
+          <div className="flex flex-col items-center gap-4 text-center">
+            <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-emerald-300">
+              Services
+            </span>
+            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              What we do best
+            </h2>
+            <p className="mt-4 max-w-2xl text-balance text-sm sm:text-base text-slate-300/80">
+              Full-stack development expertise combined with world-class design to build
+              products users love. Dark, fast, and obsessively engineered.
+            </p>
           </div>
 
-          <StaggerChildren className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard
-              icon={<Code2 className="h-6 w-6" />}
-              title="Full-Stack Development"
-              description="React, Next.js, Node.js, TypeScript. We build scalable applications with modern tech stacks."
-              gradient="from-blue-500 to-indigo-600"
-            />
-            <FeatureCard
-              icon={<Sparkles className="h-6 w-6" />}
-              title="UI/UX Design"
-              description="Beautiful, intuitive interfaces that delight users and drive engagement metrics."
-              gradient="from-purple-500 to-pink-600"
-            />
-            <FeatureCard
-              icon={<Zap className="h-6 w-6" />}
-              title="Performance Optimization"
-              description="Lightning-fast load times, SEO optimization, and Core Web Vitals excellence."
-              gradient="from-orange-500 to-red-600"
-            />
-            <FeatureCard
-              icon={<Blocks className="h-6 w-6" />}
-              title="API Development"
-              description="RESTful and GraphQL APIs, microservices, and seamless third-party integrations."
-              gradient="from-[#604585] to-[#8f6fcc]"
-            />
-            <FeatureCard
-              icon={<Shield className="h-6 w-6" />}
-              title="Security & Compliance"
-              description="Enterprise-grade security, GDPR compliance, and comprehensive testing."
-              gradient="from-[#8f6fcc] to-[#c48ef6]"
-            />
-            <FeatureCard
-              icon={<Rocket className="h-6 w-6" />}
-              title="DevOps & Deployment"
-              description="CI/CD pipelines, cloud infrastructure, monitoring, and 24/7 support."
-              gradient="from-indigo-500 to-blue-600"
-            />
-          </StaggerChildren>
-        </InViewOnce>
-      </Section>
+          {/* Services grid */}
+          <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 xl:grid-cols-3">
+            {/* Full-Stack Development */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-300 text-white shadow-[0_0_25px_rgba(52,211,153,0.5)]">
+                  <Code2 className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Full-Stack Development
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                React, Next.js, Node.js, TypeScript. We build scalable, secure applications
+                with battle-tested modern stacks.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Clean architecture • API-first design • High-performance UIs
+              </p>
+            </article>
+
+            {/* UI/UX Design */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_25px_rgba(56,189,248,0.5)]">
+                  <Layout className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  UI/UX Design
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Intuitive, conversion-focused interfaces that feel fast and effortless,
+                tailored for your users and your brand.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Wireframes to polish • Design systems • Interaction design
+              </p>
+            </article>
+
+            {/* Performance Optimization */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-orange-400 text-white shadow-[0_0_25px_rgba(251,146,60,0.5)]">
+                  <Gauge className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Performance Optimization
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Lighthouse-friendly, Core Web Vitals obsessed. We tune your app for
+                lightning-fast loads and smooth interactions.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Profiling • Caching • Edge delivery • SEO-aware performance
+              </p>
+            </article>
+
+            {/* API Development */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_25px_rgba(34,211,238,0.5)]">
+                  <Braces className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  API Development
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                RESTful and GraphQL APIs, microservices, and clean integrations with
+                third-party platforms and internal tools.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Robust contracts • Versioning • Observability
+              </p>
+            </article>
+
+            {/* Security & Compliance */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)]">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Security &amp; Compliance
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Enterprise-grade security practices, sane defaults, and compliance-minded
+                architectures from day one.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Auth &amp; permissions • Hardening • Auditing
+              </p>
+            </article>
+
+            {/* DevOps & Deployment */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/80 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_0_40px_rgba(52,211,153,0.35)]">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_25px_rgba(59,130,246,0.5)]">
+                  <ServerCog className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  DevOps &amp; Deployment
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                CI/CD pipelines, cloud infrastructure, observability, and reliable
+                deployments so your product just stays online.
+              </p>
+              <p className="mt-3 text-xs font-medium text-emerald-300/80">
+                • Pipelines • Monitoring • 24/7-ready setups
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       {/* Process */}
       <Section className="bg-gradient-to-b from-[#f3edf9] to-white py-24 lg:py-32">
