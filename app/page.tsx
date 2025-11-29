@@ -11,11 +11,10 @@ import { InViewOnce } from "@/components/motion/in-view-once";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import HeroCodeBackground from "@/components/hero-code-background";
 import HeroContactLink from "@/components/hero-contact-link";
 import Logo from "@/components/logo";
-import { useRef } from "react";
 import {
   ArrowRight,
   Braces,
@@ -62,229 +61,210 @@ const serviceCardVariants = {
 };
 
 export default function Home() {
-  const transitionRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: transitionRef,
-    offset: ["start center", "end center"],
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
-  const heroTranslateY = useTransform(scrollYProgress, [0, 0.22], [0, -16]);
-  const servicesOpacity = useTransform(scrollYProgress, [0, 0.22], [0, 1]);
-
   return (
     <div className="relative min-h-screen bg-[#0a0a0a]">
       <Header />
 
+      {/* Hero Section */}
+      <section
+        id="hero-section"
+        className="relative flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] pt-6 pb-24 lg:pb-36"
+      >
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <HeroCodeBackground />
+        </div>
 
-      <div ref={transitionRef} className="relative bg-[#0a0a0a]">
-        {/* Hero Section */}
-        <motion.section
-          id="hero-section"
-          className="relative z-10 flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] pt-6 pb-24 lg:pb-36"
-          style={{ opacity: heroOpacity, y: heroTranslateY }}
-        >
-          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-            <HeroCodeBackground />
-          </div>
-
-          <Section className="relative z-10 flex w-full items-center justify-center">
-            <div className="relative z-10 mx-auto max-w-6xl text-center">
-              <div className="relative z-10 mx-auto mb-10 inline-flex">
-                <Logo
-                  width={600}
-                  height={600}
-                  className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
-                  priority
-                />
-              </div>
-
-              <SlideUp delay={0.4}>
-                <div className="flex justify-center">
-                  <div className="relative inline-flex">
-                    <HeroContactLink />
-                  </div>
-                </div>
-              </SlideUp>
+        <Section className="relative z-10 flex w-full items-center justify-center">
+          <div className="relative z-10 mx-auto max-w-6xl text-center">
+            <div className="relative z-10 mx-auto mb-10 inline-flex">
+              <Logo
+                width={600}
+                height={600}
+                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
+                priority
+              />
             </div>
-          </Section>
-        </motion.section>
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-[60vh] z-[1] h-64 bg-gradient-to-b from-transparent via-[#0a0a0a]/70 to-transparent"
-        />
-
-        {/* Services – What we do best */}
-        <motion.section
-          id="services"
-          className="relative z-10 bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
-          style={{ opacity: servicesOpacity }}
-        >
-          <div className="mx-auto max-w-5xl px-6 lg:px-8">
-            {/* Section label */}
-            <motion.div
-              className="flex flex-col items-center gap-4 text-center"
-              variants={servicesHeaderVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-            >
-              <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
-                Services
-              </span>
-              <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                What we do best
-              </h2>
-              <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
-                Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
-                obsessively engineered experiences that feel native from day one.
-              </p>
-            </motion.div>
-
-            {/* Services grid */}
-            <motion.div
-              className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3"
-              variants={servicesGridVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-            >
-              {/* Full-Stack Development */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#54e3b9] text-white shadow-[0_0_25px_rgba(52,211,153,0.45)]">
-                    <Code2 className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    Full-Stack Development
-                  </h3>
+            <SlideUp delay={0.4}>
+              <div className="flex justify-center">
+                <div className="relative inline-flex">
+                  <HeroContactLink />
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  Next.js, Node, TypeScript, databases tuned for scale. We architect resilient
-                  products that stay fast under real traffic.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Clean architecture • API-first design • High-performance UIs
-                </p>
-              </motion.article>
-
-              {/* UI/UX Design */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_26px_rgba(56,189,248,0.45)]">
-                    <Layout className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    UI/UX Design
-                  </h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  Product strategy to pixel-perfect delivery. We craft interfaces that stay
-                  sharp in dark mode and convert without friction.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Wireframes to polish • Design systems • Interaction design
-                </p>
-              </motion.article>
-
-              {/* Performance Optimization */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#38bdf8] text-white shadow-[0_0_26px_rgba(56,189,248,0.38)]">
-                    <Gauge className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    Performance Optimization
-                  </h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  Core Web Vitals, bundle budgets, edge delivery, and profiling to shave
-                  milliseconds. We keep your experience laser fast.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Profiling • Caching • Edge delivery • SEO-aware performance
-                </p>
-              </motion.article>
-
-              {/* API Development */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_26px_rgba(34,211,238,0.42)]">
-                    <Braces className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    API Development
-                  </h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  REST, GraphQL, queues, and event-driven patterns with strong contracts and
-                  observability baked in from the start.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Robust contracts • Versioning • Observability
-                </p>
-              </motion.article>
-
-              {/* Security & Compliance */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_26px_rgba(168,85,247,0.45)]">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    Security & Compliance
-                  </h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  Secure defaults, least-privilege access, audits, and encryption-first
-                  pipelines so you launch with confidence.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Auth & permissions • Hardening • Auditing
-                </p>
-              </motion.article>
-
-              {/* DevOps & Deployment */}
-              <motion.article
-                variants={serviceCardVariants}
-                className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_26px_rgba(59,130,246,0.4)]">
-                    <ServerCog className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white sm:text-lg">
-                    DevOps & Deployment
-                  </h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
-                  CI/CD automation, zero-downtime releases, telemetry, and recovery plans.
-                  Your stack stays observable and ship-ready.
-                </p>
-                <p className="mt-3 text-xs font-semibold text-emerald-300/80">
-                  • Pipelines • Monitoring • 24/7-ready setups
-                </p>
-              </motion.article>
-            </motion.div>
+              </div>
+            </SlideUp>
           </div>
-        </motion.section>
-      </div>
+        </Section>
+      </section>
+
+      {/* Services – What we do best */}
+      <section
+        id="services"
+        className="relative bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
+      >
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          {/* Section label */}
+          <motion.div
+            className="flex flex-col items-center gap-4 text-center"
+            variants={servicesHeaderVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+          >
+            <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
+              Services
+            </span>
+            <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              What we do best
+            </h2>
+            <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
+              Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
+              obsessively engineered experiences that feel native from day one.
+            </p>
+          </motion.div>
+
+          {/* Services grid */}
+          <motion.div
+            className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3"
+            variants={servicesGridVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+          >
+            {/* Full-Stack Development */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#54e3b9] text-white shadow-[0_0_25px_rgba(52,211,153,0.45)]">
+                  <Code2 className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Full-Stack Development
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Next.js, Node, TypeScript, databases tuned for scale. We architect resilient
+                products that stay fast under real traffic.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Clean architecture • API-first design • High-performance UIs
+              </p>
+            </motion.article>
+
+            {/* UI/UX Design */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_26px_rgba(56,189,248,0.45)]">
+                  <Layout className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  UI/UX Design
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Product strategy to pixel-perfect delivery. We craft interfaces that stay
+                sharp in dark mode and convert without friction.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Wireframes to polish • Design systems • Interaction design
+              </p>
+            </motion.article>
+
+            {/* Performance Optimization */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#38bdf8] text-white shadow-[0_0_26px_rgba(56,189,248,0.38)]">
+                  <Gauge className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Performance Optimization
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Core Web Vitals, bundle budgets, edge delivery, and profiling to shave
+                milliseconds. We keep your experience laser fast.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Profiling • Caching • Edge delivery • SEO-aware performance
+              </p>
+            </motion.article>
+
+            {/* API Development */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_26px_rgba(34,211,238,0.42)]">
+                  <Braces className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  API Development
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                REST, GraphQL, queues, and event-driven patterns with strong contracts and
+                observability baked in from the start.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Robust contracts • Versioning • Observability
+              </p>
+            </motion.article>
+
+            {/* Security & Compliance */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_26px_rgba(168,85,247,0.45)]">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  Security &amp; Compliance
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                Secure defaults, least-privilege access, audits, and encryption-first
+                pipelines so you launch with confidence.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Auth &amp; permissions • Hardening • Auditing
+              </p>
+            </motion.article>
+
+            {/* DevOps & Deployment */}
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_26px_rgba(59,130,246,0.4)]">
+                  <ServerCog className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  DevOps &amp; Deployment
+                </h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300/80">
+                CI/CD automation, zero-downtime releases, telemetry, and recovery plans.
+                Your stack stays observable and ship-ready.
+              </p>
+              <p className="mt-3 text-xs font-semibold text-emerald-300/80">
+                • Pipelines • Monitoring • 24/7-ready setups
+              </p>
+            </motion.article>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Process */}
       <Section className="bg-[#0a0a0a] py-24 lg:py-32">
         <InViewOnce>
