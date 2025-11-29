@@ -11,10 +11,11 @@ import { InViewOnce } from "@/components/motion/in-view-once";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HeroCodeBackground from "@/components/hero-code-background";
 import HeroContactLink from "@/components/hero-contact-link";
 import Logo from "@/components/logo";
+import { useRef } from "react";
 import {
   ArrowRight,
   Braces,
@@ -61,66 +62,87 @@ const serviceCardVariants = {
 };
 
 export default function Home() {
+  const backgroundFadeRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: backgroundFadeRef,
+    offset: ["start end", "end start"],
+  });
+
+  const gradientOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.6, 1]);
+  const gradientShift = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a]">
       <Header />
 
-      {/* Hero Section */}
-      <section
-        id="hero-section"
-        className="relative flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] pt-6 pb-24 lg:pb-36"
-      >
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <HeroCodeBackground />
-        </div>
+      <div ref={backgroundFadeRef} className="relative">
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            opacity: gradientOpacity,
+            y: gradientShift,
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 45%, rgba(20,20,20,0.4) 65%, rgba(20,20,20,0) 100%)",
+          }}
+        />
 
-        <Section className="relative z-10 flex w-full items-center justify-center">
-          <div className="relative z-10 mx-auto max-w-6xl text-center">
-            <div className="relative z-10 mx-auto mb-10 inline-flex">
-              <Logo
-                width={600}
-                height={600}
-                className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
-                priority
-              />
-            </div>
-
-            <SlideUp delay={0.4}>
-              <div className="flex justify-center">
-                <div className="relative inline-flex">
-                  <HeroContactLink />
-                </div>
-              </div>
-            </SlideUp>
+        {/* Hero Section */}
+        <section
+          id="hero-section"
+          className="relative flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] pt-6 pb-24 lg:pb-36"
+        >
+          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <HeroCodeBackground />
           </div>
-        </Section>
-      </section>
 
-      {/* Services – What we do best */}
-      <section
-        id="services"
-        className="relative bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
-      >
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          {/* Section label */}
-          <motion.div
-            className="flex flex-col items-center gap-4 text-center"
-            variants={servicesHeaderVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.35 }}
-          >
-            <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
-              Services
-            </span>
-            <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              What we do best
-            </h2>
-            <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
-              Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
-              obsessively engineered experiences that feel native from day one.
-            </p>
-          </motion.div>
+          <Section className="relative z-10 flex w-full items-center justify-center">
+            <div className="relative z-10 mx-auto max-w-6xl text-center">
+              <div className="relative z-10 mx-auto mb-10 inline-flex">
+                <Logo
+                  width={600}
+                  height={600}
+                  className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
+                  priority
+                />
+              </div>
+
+              <SlideUp delay={0.4}>
+                <div className="flex justify-center">
+                  <div className="relative inline-flex">
+                    <HeroContactLink />
+                  </div>
+                </div>
+              </SlideUp>
+            </div>
+          </Section>
+        </section>
+
+        {/* Services – What we do best */}
+        <section
+          id="services"
+          className="relative bg-[#0a0a0a] py-20 sm:py-24 lg:py-28"
+        >
+          <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
+            {/* Section label */}
+            <motion.div
+              className="flex flex-col items-center gap-4 text-center"
+              variants={servicesHeaderVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.35 }}
+            >
+              <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
+                Services
+              </span>
+              <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                What we do best
+              </h2>
+              <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
+                Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
+                obsessively engineered experiences that feel native from day one.
+              </p>
+            </motion.div>
 
           {/* Services grid */}
           <motion.div
@@ -264,6 +286,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      </div>
 
       {/* Process */}
       <Section className="bg-[#0a0a0a] py-24 lg:py-32">
