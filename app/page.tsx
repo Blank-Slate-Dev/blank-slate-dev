@@ -1,3 +1,5 @@
+"use client";
+
 // app/page.tsx
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -9,6 +11,7 @@ import { InViewOnce } from "@/components/motion/in-view-once";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import HeroCodeBackground from "@/components/hero-code-background";
 import HeroContactLink from "@/components/hero-contact-link";
@@ -21,6 +24,41 @@ import {
   ServerCog,
   ShieldCheck,
 } from "lucide-react";
+
+const servicesHeaderVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const servicesGridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const serviceCardVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -63,11 +101,17 @@ export default function Home() {
       {/* Services – What we do best */}
       <section
         id="services"
-        className="relative border-t border-emerald-500/10 bg-[#050505] py-20 sm:py-24 lg:py-28"
+        className="relative bg-[#050505] py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           {/* Section label */}
-          <div className="flex flex-col items-center gap-4 text-center">
+          <motion.div
+            className="flex flex-col items-center gap-4 text-center"
+            variants={servicesHeaderVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+          >
             <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
               Services
             </span>
@@ -78,12 +122,21 @@ export default function Home() {
               Full-stack rigor paired with high-fidelity design. We ship dark, fast, and
               obsessively engineered experiences that feel native from day one.
             </p>
-          </div>
+          </motion.div>
 
           {/* Services grid */}
-          <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3"
+            variants={servicesGridVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+          >
             {/* Full-Stack Development */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#54e3b9] text-white shadow-[0_0_25px_rgba(52,211,153,0.45)]">
                   <Code2 className="h-5 w-5" />
@@ -99,10 +152,13 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Clean architecture • API-first design • High-performance UIs
               </p>
-            </article>
+            </motion.article>
 
             {/* UI/UX Design */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#7dd3fc] text-white shadow-[0_0_26px_rgba(56,189,248,0.45)]">
                   <Layout className="h-5 w-5" />
@@ -118,10 +174,13 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Wireframes to polish • Design systems • Interaction design
               </p>
-            </article>
+            </motion.article>
 
             {/* Performance Optimization */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#38bdf8] text-white shadow-[0_0_26px_rgba(56,189,248,0.38)]">
                   <Gauge className="h-5 w-5" />
@@ -137,10 +196,13 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Profiling • Caching • Edge delivery • SEO-aware performance
               </p>
-            </article>
+            </motion.article>
 
             {/* API Development */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-[#22d3ee] text-white shadow-[0_0_26px_rgba(34,211,238,0.42)]">
                   <Braces className="h-5 w-5" />
@@ -156,10 +218,13 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Robust contracts • Versioning • Observability
               </p>
-            </article>
+            </motion.article>
 
             {/* Security & Compliance */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-purple-500 text-white shadow-[0_0_26px_rgba(168,85,247,0.45)]">
                   <ShieldCheck className="h-5 w-5" />
@@ -175,10 +240,13 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Auth &amp; permissions • Hardening • Auditing
               </p>
-            </article>
+            </motion.article>
 
             {/* DevOps & Deployment */}
-            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]">
+            <motion.article
+              variants={serviceCardVariants}
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-[#0b0b0f]/90 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.75)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/90 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.25),0_16px_55px_rgba(0,0,0,0.8),0_0_35px_rgba(52,211,153,0.25)]"
+            >
               <div className="flex items-center gap-4">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-sky-500 text-white shadow-[0_0_26px_rgba(59,130,246,0.4)]">
                   <ServerCog className="h-5 w-5" />
@@ -194,8 +262,8 @@ export default function Home() {
               <p className="mt-3 text-xs font-semibold text-emerald-300/80">
                 • Pipelines • Monitoring • 24/7-ready setups
               </p>
-            </article>
-          </div>
+            </motion.article>
+          </motion.div>
         </div>
       </section>
 
