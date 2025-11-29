@@ -12,9 +12,9 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import HeroCodeBackground from "@/components/hero-code-background";
 import HeroContactLink from "@/components/hero-contact-link";
+import Logo from "@/components/logo";
 import {
   ArrowRight,
   Braces,
@@ -77,9 +77,7 @@ export default function Home() {
         <Section className="relative z-10 flex w-full items-center justify-center">
           <div className="relative z-10 mx-auto max-w-6xl text-center">
             <div className="relative z-10 mx-auto mb-10 inline-flex">
-              <Image
-                src="/Blank-slate-dev.png"
-                alt="Blank Slate Dev"
+              <Logo
                 width={600}
                 height={600}
                 className="relative z-10 h-80 w-auto md:h-[25rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
