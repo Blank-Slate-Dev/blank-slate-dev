@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "We design, build, and launch high-polish web apps for founders and teams. From idea to production.",
   icons: {
-    icon: "/BlankSlateLOGO.png",
+    icon: "/Logo.png",
   },
 };
 
