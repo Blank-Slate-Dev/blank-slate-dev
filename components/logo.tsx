@@ -1,5 +1,6 @@
 // components/logo.tsx
 import Image from "next/image";
+import LogoImage from "@/public/Logo.png";
 
 type LogoProps = {
   className?: string;
@@ -16,7 +17,7 @@ export default function Logo({
 }: LogoProps) {
   return (
     <Image
-      src="/BlankSlateLOGO.png"
+      src={LogoImage}
       alt="Blank Slate Dev logo"
       width={width}
       height={height}
