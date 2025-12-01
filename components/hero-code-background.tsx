@@ -115,11 +115,8 @@ interface SlotConfig {
   yMax: number;
 }
 
-// Six fixed slots (3 per side) to keep cards visible and away from the logo
+// Three fixed slots on the RIGHT side only
 const SLOTS: SlotConfig[] = [
-  { xMin: 2, xMax: 8, yMin: 8, yMax: 18 },
-  { xMin: 2, xMax: 8, yMin: 38, yMax: 48 },
-  { xMin: 2, xMax: 8, yMin: 72, yMax: 82 },
   { xMin: 65, xMax: 72, yMin: 8, yMax: 18 },
   { xMin: 65, xMax: 72, yMin: 38, yMax: 48 },
   { xMin: 65, xMax: 72, yMin: 72, yMax: 82 },
@@ -452,13 +449,9 @@ export default function HeroCodeBackground() {
       {/* Pure black background */}
       <div className="absolute inset-0 bg-black" />
 
-      {/* Code patches */}
+      {/* Code patches - RIGHT SIDE ONLY */}
       {patches.map((patch) => (
-        <CodePatchComponent
-          key={patch.id}
-          patch={patch}
-          onCycle={cyclePatch}
-        />
+        <CodePatchComponent key={patch.id} patch={patch} onCycle={cyclePatch} />
       ))}
 
       {/* Subtle vignette */}
