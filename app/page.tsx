@@ -78,24 +78,16 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 h-full flex items-center">
             <div className="w-full">
               {/* Two-column layout */}
-              <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between min-h-[calc(100vh-12rem)]">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[calc(100vh-12rem)]">
                 {/* LEFT COLUMN - Spline MacBook */}
-                <div className="order-3 lg:order-1 relative z-20">
+                <div className="order-2 lg:order-1 relative z-20">
                   <FadeIn delay={0.2}>
                     <HeroSplineMacbook />
                   </FadeIn>
                 </div>
 
-                <SlideUp delay={0.4}>
-                  <div className="order-2 flex justify-center lg:mx-auto lg:w-auto">
-                    <div className="relative inline-flex">
-                      <HeroContactLink />
-                    </div>
-                  </div>
-                </SlideUp>
-
                 {/* RIGHT COLUMN - Logo and CTA */}
-                <div className="order-1 lg:order-3 flex flex-col items-center text-center relative z-10">
+                <div className="order-1 lg:order-2 flex flex-col items-center text-center relative z-10">
                   <div className="relative z-10 mb-10 inline-flex">
                     <Logo
                       width={600}
@@ -104,6 +96,14 @@ export default function Home() {
                       priority
                     />
                   </div>
+
+                  <SlideUp delay={0.4}>
+                    <div className="flex justify-center">
+                      <div className="relative inline-flex">
+                        <HeroContactLink />
+                      </div>
+                    </div>
+                  </SlideUp>
                 </div>
               </div>
             </div>
