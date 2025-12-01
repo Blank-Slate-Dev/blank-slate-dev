@@ -92,7 +92,7 @@ export default function Home() {
                     <Logo
                       width={600}
                       height={600}
-                      className="relative z-10 h-52 w-auto sm:h-64 md:h-72 lg:h-[20rem] xl:h-[22rem] drop-shadow-[0_0_6px_rgba(168,85,255,0.45)] drop-shadow-[0_0_12px_rgba(168,85,255,0.25)]"
+                      className="relative z-10 h-52 w-auto sm:h-64 md:h-72 lg:h-[20rem] xl:h-[22rem] drop-shadow-[0_0_6px_rgba(255,122,26,0.45)] drop-shadow-[0_0_12px_rgba(255,177,94,0.25)]"
                       priority
                     />
                   </div>
