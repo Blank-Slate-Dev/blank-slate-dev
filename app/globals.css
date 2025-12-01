@@ -157,14 +157,12 @@ body {
 .matrix-button {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(135deg, #2b0f59 0%, #6d28d9 100%);
-  border: 1px solid rgba(168, 85, 255, 0.4);
+  background: linear-gradient(180deg, #fbe7c5 0%, #f5d8a4 100%);
+  border: 1px solid rgba(245, 216, 164, 0.6);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 10px 20px rgba(255, 255, 255, 0.05),
-    0 10px 40px rgba(0, 0, 0, 0.7),
-    0 0 30px rgba(168, 85, 255, 0.12),
-    0 0 28px rgba(34, 197, 94, 0.12);
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 10px 20px rgba(255, 255, 255, 0.08);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 130, 0.45));
   transition:
     transform 220ms ease,
     box-shadow 220ms ease,
@@ -178,11 +176,11 @@ body {
   inset: -2px;
   border-radius: inherit;
   padding: 2px;
-  background: conic-gradient(from 140deg, #a855ff, #22c55e, #a855ff);
+  background: conic-gradient(from 140deg, #fbe7c5, #f5d8a4, #fbe7c5);
   background-size: 200% 200%;
   animation: ring-flow 2s ease-in-out infinite;
   animation-play-state: paused;
-  filter: drop-shadow(0 0 12px rgba(168, 85, 255, 0.25)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.25));
+  filter: drop-shadow(0 0 8px rgba(255, 215, 130, 0.45));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -206,21 +204,18 @@ body {
 .matrix-button:hover,
 .matrix-button:focus-visible {
   transform: scale(1.03);
-  background: linear-gradient(135deg, #34106b 0%, #7c3aed 100%);
+  background: linear-gradient(180deg, #fbeed4 0%, #f6deb5 100%);
   color: #ffffff;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 10px 22px rgba(255, 255, 255, 0.06),
-    0 12px 44px rgba(0, 0, 0, 0.78),
-    0 0 36px rgba(168, 85, 255, 0.18),
-    0 0 32px rgba(34, 197, 94, 0.18);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 10px 22px rgba(255, 255, 255, 0.12);
 }
 
 .matrix-button:hover::before,
 .matrix-button:focus-visible::before {
   animation-play-state: running;
   opacity: 1;
-  filter: drop-shadow(0 0 14px rgba(168, 85, 255, 0.32)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.32));
+  filter: drop-shadow(0 0 8px rgba(255, 215, 130, 0.45));
 }
 
 .matrix-button:hover::after,
