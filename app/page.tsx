@@ -108,6 +108,18 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <div className="relative w-full h-[300px] pointer-events-none select-none">
+            {/* Floor gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] to-black" />
+
+            {/* Reflection glow */}
+            <div
+              className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[200px] 
+                  bg-[radial-gradient(ellipse_at_center,rgba(255,140,60,0.25)_0%,rgba(0,0,0,0)_70%)]
+                  blur-3xl opacity-60"
+            />
+          </div>
         </section>
 
         {/* ---------------------------------------------------------- */}
