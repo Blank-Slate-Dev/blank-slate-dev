@@ -13,12 +13,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SplineShowcase } from "@/components/spline-showcase";
-import Logo from "@/components/logo";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const backgroundFadeRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: backgroundFadeRef,
     offset: ["start end", "end start"],
@@ -26,10 +26,29 @@ export default function Home() {
 
   const [isPageLoaded, setIsPageLoaded] = useState(false);
 
+  // Handle scroll events on the hero section
+  const handleWheel = useCallback((e: WheelEvent) => {
+    e.preventDefault();
+    window.scrollBy({
+      top: e.deltaY,
+      behavior: "instant",
+    });
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => setIsPageLoaded(true), 50);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener("wheel", handleWheel, { passive: false });
+      return () => {
+        heroElement.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, [handleWheel]);
 
   const gradientOpacity = useTransform(
     scrollYProgress,
@@ -63,10 +82,11 @@ export default function Home() {
         {/* HERO SECTION                                                */}
         {/* ---------------------------------------------------------- */}
         <section
+          ref={heroRef}
           id="hero-section"
-          className="relative min-h-screen overflow-hidden bg-[#0a0a0a]"
+          className="relative h-screen overflow-hidden bg-[#0a0a0a]"
         >
-          {/* Full-screen Spline background */}
+          {/* Full-screen interactive Spline background (keyboard keys) */}
           <div className="absolute inset-0 w-full h-full z-0">
             <iframe
               src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
@@ -77,41 +97,32 @@ export default function Home() {
             />
           </div>
 
-          {/* Content overlay */}
-          <div className="relative z-10 min-h-screen flex flex-col">
-            {/* Top-left logo */}
-            <div className="absolute top-6 left-6 sm:top-8 sm:left-8 lg:top-10 lg:left-12 z-20">
-              <FadeIn delay={0.2}>
-                <Logo
-                  width={200}
-                  height={200}
-                  className="h-16 w-auto sm:h-20 md:h-24 lg:h-28 drop-shadow-[0_0_12px_rgba(255,122,26,0.5)] drop-shadow-[0_0_24px_rgba(255,177,94,0.3)]"
-                  priority
-                />
-              </FadeIn>
-            </div>
-
-            {/* Main content area */}
-            <div className="flex-1 flex items-center">
-              <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  {/* LEFT COLUMN - MacBook Spline */}
-                  <div className="order-2 lg:order-1">
-                    <SlideUp delay={0.4}>
-                      <SplineShowcase
-                        src="https://my.spline.design/macbookwithcode-Xe4xd7M8vkd14o4G8w63yuPl/"
-                        maxWidth="100%"
-                      />
-                    </SlideUp>
-                  </div>
-
-                  {/* RIGHT COLUMN - Empty for now, can add contact form later */}
-                  <div className="order-1 lg:order-2 flex flex-col items-center lg:items-start justify-center">
-                    {/* Placeholder for future content like tagline or contact form */}
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* MacBook Spline - centered vertically, 100px from left */}
+          <div
+            className="absolute z-10 pointer-events-none"
+            style={{
+              left: "100px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "45%",
+              maxWidth: "700px",
+              aspectRatio: "16 / 10",
+            }}
+          >
+            <motion.div
+              className="w-full h-full"
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <iframe
+                src="https://my.spline.design/macbookwithcode-Xe4xd7M8vkd14o4G8w63yuPl/"
+                frameBorder="0"
+                className="w-full h-full"
+                allow="fullscreen"
+                style={{ border: "none", pointerEvents: "none" }}
+              />
+            </motion.div>
           </div>
         </section>
 
