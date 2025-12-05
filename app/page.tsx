@@ -12,11 +12,8 @@ import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion, useScroll, useTransform } from "framer-motion";
-import HeroCodeBackground from "@/components/hero-code-background";
-import HeroSplineMacbook from "@/components/hero-spline-macbook";
-import HeroContactLink from "@/components/hero-contact-link";
-import Logo from "@/components/logo";
 import { SplineShowcase } from "@/components/spline-showcase";
+import Logo from "@/components/logo";
 import { useRef, useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -30,7 +27,6 @@ export default function Home() {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
 
   useEffect(() => {
-    // Small delay so layout/paint is ready before we start the global fade
     const timer = setTimeout(() => setIsPageLoaded(true), 50);
     return () => clearTimeout(timer);
   }, []);
@@ -68,42 +64,51 @@ export default function Home() {
         {/* ---------------------------------------------------------- */}
         <section
           id="hero-section"
-          className="relative min-h-screen overflow-hidden bg-[#0a0a0a] pt-20 pb-24 lg:pt-24 lg:pb-36"
+          className="relative min-h-screen overflow-hidden bg-[#0a0a0a]"
         >
-          {/* Code background - RIGHT SIDE ONLY */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-            <HeroCodeBackground />
+          {/* Full-screen Spline background */}
+          <div className="absolute inset-0 w-full h-full z-0">
+            <iframe
+              src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+              frameBorder="0"
+              className="w-full h-full"
+              allow="fullscreen"
+              style={{ border: "none" }}
+            />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 h-full flex items-center">
-            <div className="w-full">
-              {/* Two-column layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[calc(100vh-12rem)]">
-                {/* LEFT COLUMN - Spline MacBook */}
-                <div className="order-2 lg:order-1 relative z-20">
-                  <FadeIn delay={0.2}>
-                    <HeroSplineMacbook />
-                  </FadeIn>
-                </div>
+          {/* Content overlay */}
+          <div className="relative z-10 min-h-screen flex flex-col">
+            {/* Top-left logo */}
+            <div className="absolute top-6 left-6 sm:top-8 sm:left-8 lg:top-10 lg:left-12 z-20">
+              <FadeIn delay={0.2}>
+                <Logo
+                  width={200}
+                  height={200}
+                  className="h-16 w-auto sm:h-20 md:h-24 lg:h-28 drop-shadow-[0_0_12px_rgba(255,122,26,0.5)] drop-shadow-[0_0_24px_rgba(255,177,94,0.3)]"
+                  priority
+                />
+              </FadeIn>
+            </div>
 
-                {/* RIGHT COLUMN - Logo and CTA */}
-                <div className="order-1 lg:order-2 flex flex-col items-center text-center relative z-10">
-                  <div className="relative z-10 mb-10 inline-flex">
-                    <Logo
-                      width={600}
-                      height={600}
-                      className="relative z-10 h-52 w-auto sm:h-64 md:h-72 lg:h-[20rem] xl:h-[22rem] drop-shadow-[0_0_6px_rgba(255,122,26,0.45)] drop-shadow-[0_0_12px_rgba(255,177,94,0.25)]"
-                      priority
-                    />
+            {/* Main content area */}
+            <div className="flex-1 flex items-center">
+              <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  {/* LEFT COLUMN - MacBook Spline */}
+                  <div className="order-2 lg:order-1">
+                    <SlideUp delay={0.4}>
+                      <SplineShowcase
+                        src="https://my.spline.design/macbookwithcode-Xe4xd7M8vkd14o4G8w63yuPl/"
+                        maxWidth="100%"
+                      />
+                    </SlideUp>
                   </div>
 
-                  <SlideUp delay={0.4}>
-                    <div className="flex justify-center">
-                      <div className="relative inline-flex">
-                        <HeroContactLink />
-                      </div>
-                    </div>
-                  </SlideUp>
+                  {/* RIGHT COLUMN - Empty for now, can add contact form later */}
+                  <div className="order-1 lg:order-2 flex flex-col items-center lg:items-start justify-center">
+                    {/* Placeholder for future content like tagline or contact form */}
+                  </div>
                 </div>
               </div>
             </div>
