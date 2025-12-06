@@ -174,59 +174,88 @@ export default function Home() {
           </FadeIn>
         </InViewOnce>
 
-        <div className="mt-16 flex flex-col items-center gap-6">
+        <div className="mt-20 flex flex-col items-center gap-24">
           {[
             {
               step: "01",
               title: "Discovery",
               description:
                 "We learn your goals and identify exactly what your business needs.",
-              glow: "shadow-[0_0_25px_rgba(180,70,255,0.6)]",
-              border: "border-white/10",
-              line: "rgba(180,70,255,0.5)",
+              glow: "shadow-[0_0_18px_rgba(180,70,255,0.45)]",
+              border: "border-[rgba(180,70,255,0.3)]",
+              borderGradient: "from-[rgba(180,70,255,0.35)] via-[rgba(120,90,255,0.18)] to-[rgba(80,40,140,0.14)]",
+              lineGradient: {
+                from: "rgba(255,255,255,0.9)",
+                to: "rgba(180,70,255,0.65)",
+              },
+              lineShadow: "rgba(180,70,255,0.45)",
             },
             {
               step: "02",
               title: "Design",
               description: "We craft clean, purposeful UI/UX that fits your vision.",
-              glow: "shadow-[0_0_25px_rgba(0,255,120,0.6)]",
-              border: "border-white/10",
-              line: "rgba(0,255,120,0.5)",
+              glow: "shadow-[0_0_18px_rgba(0,255,120,0.45)]",
+              border: "border-[rgba(0,255,120,0.3)]",
+              borderGradient: "from-[rgba(0,255,160,0.28)] via-[rgba(0,120,90,0.18)] to-[rgba(0,70,50,0.14)]",
+              lineGradient: {
+                from: "rgba(255,255,255,0.9)",
+                to: "rgba(0,255,140,0.65)",
+              },
+              lineShadow: "rgba(0,255,120,0.45)",
             },
             {
               step: "03",
               title: "Development",
               description:
                 "We build fast, reliable, fully custom websites — no templates, ever.",
-              glow: "shadow-[0_0_25px_rgba(0,180,255,0.6)]",
-              border: "border-white/10",
-              line: "rgba(0,180,255,0.5)",
+              glow: "shadow-[0_0_18px_rgba(0,180,255,0.45)]",
+              border: "border-[rgba(0,180,255,0.3)]",
+              borderGradient: "from-[rgba(0,200,255,0.32)] via-[rgba(0,120,200,0.2)] to-[rgba(0,60,120,0.16)]",
+              lineGradient: {
+                from: "rgba(255,255,255,0.9)",
+                to: "rgba(0,180,255,0.65)",
+              },
+              lineShadow: "rgba(0,180,255,0.45)",
             },
             {
               step: "04",
               title: "Launch",
               description:
                 "We deploy, optimise, and support your site for long-term success.",
-              glow: "shadow-[0_0_25px_rgba(255,215,0,0.6)]",
-              border: "border-white/10",
-              line: "rgba(255,215,0,0.5)",
+              glow: "shadow-[0_0_18px_rgba(255,210,0,0.45)]",
+              border: "border-[rgba(255,210,0,0.3)]",
+              borderGradient: "from-[rgba(255,230,120,0.38)] via-[rgba(180,120,20,0.2)] to-[rgba(120,80,0,0.16)]",
+              lineGradient: {
+                from: "rgba(255,255,255,0.9)",
+                to: "rgba(255,210,0,0.7)",
+              },
+              lineShadow: "rgba(255,210,0,0.45)",
             },
           ].map((item, idx) => (
             <div key={item.step} className="flex flex-col items-center">
               <InViewOnce>
                 <FadeIn delay={0.1 * (idx + 1)}>
-                  <SlideUp distance={20}>
-                    <div
-                      className={`relative px-6 py-4 rounded-xl border ${item.border} bg-white/5 backdrop-blur-sm text-center max-w-md ${item.glow}`}
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="text-xs font-semibold uppercase tracking-[0.28em] text-white/80">
-                          Step {item.step}
+                  <SlideUp distance={20} duration={0.6} ease="easeOut" scaleFrom={1.05}>
+                    <div className="relative w-full max-w-xl">
+                      <div
+                        className={`relative rounded-2xl p-[1.5px] bg-gradient-to-br ${item.borderGradient} ${item.glow} transition-all duration-500`}
+                      >
+                        <div
+                          className={`relative px-8 py-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-center overflow-hidden ${item.border}`}
+                        >
+                          <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]" />
+                          <div className="relative flex flex-col items-center gap-3">
+                            <div className="text-[11px] font-semibold uppercase tracking-[0.42em] text-white/70">
+                              Step {item.step}
+                            </div>
+                            <h3 className="text-2xl sm:text-3xl font-semibold tracking-[0.02em] text-white">
+                              {item.title}
+                            </h3>
+                            <p className="max-w-md text-sm leading-relaxed text-slate-200/85">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
-                        <h3 className="text-2xl font-bold text-white">{item.title}</h3>
-                        <p className="text-sm leading-relaxed text-slate-200/90">
-                          {item.description}
-                        </p>
                       </div>
                     </div>
                   </SlideUp>
@@ -237,26 +266,39 @@ export default function Home() {
                 <InViewOnce>
                   <FadeIn delay={0.12 * (idx + 1)}>
                     <motion.svg
-                      width="4"
-                      height="80"
-                      viewBox="0 0 4 80"
-                      className="my-6"
+                      width="6"
+                      height="90"
+                      viewBox="0 0 6 90"
+                      className="my-10"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
                     >
+                      <defs>
+                        <linearGradient
+                          id={`line-gradient-${item.step}`}
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop offset="0%" stopColor={item.lineGradient.from} />
+                          <stop offset="100%" stopColor={item.lineGradient.to} />
+                        </linearGradient>
+                      </defs>
                       <motion.line
-                        x1="2"
+                        x1="3"
                         y1="0"
-                        x2="2"
-                        y2="80"
-                        stroke={item.line}
-                        strokeWidth="3"
-                        strokeDasharray="80"
-                        initial={{ strokeDashoffset: 80 }}
+                        x2="3"
+                        y2="90"
+                        stroke={`url(#line-gradient-${item.step})`}
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeDasharray="90"
+                        initial={{ strokeDashoffset: 90 }}
                         animate={{ strokeDashoffset: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
-                        style={{ filter: `drop-shadow(0px 0px 6px ${item.line})` }}
+                        style={{ filter: `drop-shadow(0px 0px 8px ${item.lineShadow})` }}
                       />
                     </motion.svg>
                   </FadeIn>

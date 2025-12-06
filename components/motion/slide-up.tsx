@@ -9,6 +9,8 @@ interface SlideUpProps {
   duration?: number;
   className?: string;
   distance?: number;
+  ease?: number[] | string;
+  scaleFrom?: number;
 }
 
 export function SlideUp({
@@ -16,16 +18,18 @@ export function SlideUp({
   delay = 0,
   duration = 0.5,
   distance = 20,
+  ease = [0.22, 1, 0.36, 1],
+  scaleFrom = 1,
   className,
 }: SlideUpProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: distance }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: distance, scale: scaleFrom }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease,
       }}
       className={className}
     >
