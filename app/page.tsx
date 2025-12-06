@@ -59,14 +59,14 @@ export default function Home() {
 
   return (
     <motion.div
-      className="relative w-full min-h-screen bg-[#0a0a0a]"
+      className="relative min-h-screen bg-[#0a0a0a]"
       initial={{ opacity: 0 }}
       animate={{ opacity: isPageLoaded ? 1 : 0 }}
       transition={{ duration: 3 }}
     >
       <Header />
 
-      <div ref={backgroundFadeRef} className="relative w-full">
+      <div ref={backgroundFadeRef} className="relative">
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0"
@@ -84,7 +84,7 @@ export default function Home() {
         <section
           ref={heroRef}
           id="hero-section"
-          className="relative w-full h-screen overflow-hidden"
+          className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]"
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative h-full w-full origin-top-left scale-[0.85] md:scale-[0.88] lg:scale-[0.9]">
