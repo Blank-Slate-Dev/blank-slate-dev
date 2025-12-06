@@ -84,17 +84,49 @@ export default function Home() {
         <section
           ref={heroRef}
           id="hero-section"
-          className="relative h-screen overflow-hidden bg-[#0a0a0a]"
+          className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]"
         >
           {/* Full-screen interactive Spline background (keyboard keys) */}
-          <div className="hero-keyscape absolute inset-0 z-0">
-            <iframe
-              src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
-              frameBorder="0"
-              className="h-full w-full"
-              allow="fullscreen"
-              style={{ border: "none" }}
-            />
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <div className="absolute top-4 left-4 z-50 w-[160px] h-[160px] pointer-events-auto">
+              <iframe
+                src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+                frameBorder="0"
+                className="w-full h-full"
+                allow="fullscreen"
+                style={{ border: "none", transform: "translateX(0) translateY(0)" }}
+              />
+            </div>
+
+            <div className="absolute top-4 right-4 z-50 flex gap-4 pointer-events-auto">
+              <div className="w-[140px] h-[140px]">
+                <iframe
+                  src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+                  frameBorder="0"
+                  className="w-full h-full"
+                  allow="fullscreen"
+                  style={{ border: "none", transform: "translateX(0)" }}
+                />
+              </div>
+              <div className="w-[140px] h-[140px]">
+                <iframe
+                  src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+                  frameBorder="0"
+                  className="w-full h-full"
+                  allow="fullscreen"
+                  style={{ border: "none", transform: "translateX(0)" }}
+                />
+              </div>
+              <div className="w-[140px] h-[140px]">
+                <iframe
+                  src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+                  frameBorder="0"
+                  className="w-full h-full"
+                  allow="fullscreen"
+                  style={{ border: "none", transform: "translateX(0)" }}
+                />
+              </div>
+            </div>
           </div>
 
           {/* MacBook Spline - centered vertically, 100px from left */}
