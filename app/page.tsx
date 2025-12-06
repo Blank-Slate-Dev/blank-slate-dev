@@ -87,11 +87,11 @@ export default function Home() {
           className="relative h-screen overflow-hidden bg-[#0a0a0a]"
         >
           {/* Full-screen interactive Spline background (keyboard keys) */}
-          <div className="absolute inset-0 w-full h-full z-0">
+          <div className="hero-keyscape absolute inset-0 z-0">
             <iframe
               src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
               frameBorder="0"
-              className="w-full h-full"
+              className="h-full w-full"
               allow="fullscreen"
               style={{ border: "none" }}
             />
