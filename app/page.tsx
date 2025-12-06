@@ -7,6 +7,7 @@ import Section from "@/components/section";
 import { FadeIn } from "@/components/motion/fade-in";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
+import { SlideUp } from "@/components/motion/slide-up";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -156,66 +157,115 @@ export default function Home() {
       </div>
 
       {/* Process */}
-      <Section className="bg-[#050505] py-24 lg:py-32">
+      <section className="relative w-full flex flex-col items-center py-32 bg-[#0a0a0a]">
         <InViewOnce>
-          <div className="text-center">
-            <FadeIn>
+          <FadeIn>
+            <div className="text-center">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-100/80">
                 PROCESS
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                Our Process
+                How we work
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300/90">
-                A simple, streamlined approach that delivers clarity, quality, and results.
+                A vertical, neon-lit journey from first discovery to launch.
               </p>
-            </FadeIn>
-          </div>
-
-          <div className="mt-16">
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                {
-                  step: "01",
-                  title: "Discovery",
-                  description:
-                    "We learn your goals and identify exactly what your business needs.",
-                },
-                {
-                  step: "02",
-                  title: "Design",
-                  description:
-                    "We craft clean, purposeful UI/UX that fits your brand and vision.",
-                },
-                {
-                  step: "03",
-                  title: "Development",
-                  description:
-                    "We build fast, reliable, fully custom websites — no templates, ever.",
-                },
-                {
-                  step: "04",
-                  title: "Launch",
-                  description:
-                    "We deploy, optimise, and support your site for long-term success.",
-                },
-              ].map((item, idx) => (
-                <FadeIn key={idx} delay={idx * 0.1}>
-                  <div className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-8 text-center shadow-[0_10px_60px_rgba(0,0,0,0.25)] backdrop-blur-sm">
-                    <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xs font-semibold tracking-[0.18em] text-white">
-                      {item.step}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
-                      {item.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
             </div>
-          </div>
+          </FadeIn>
         </InViewOnce>
-      </Section>
+
+        <div className="mt-16 flex flex-col items-center gap-6">
+          {[
+            {
+              step: "01",
+              title: "Discovery",
+              description:
+                "We learn your goals and identify exactly what your business needs.",
+              glow: "shadow-[0_0_25px_rgba(180,70,255,0.6)]",
+              border: "border-white/10",
+              line: "rgba(180,70,255,0.5)",
+            },
+            {
+              step: "02",
+              title: "Design",
+              description: "We craft clean, purposeful UI/UX that fits your vision.",
+              glow: "shadow-[0_0_25px_rgba(0,255,120,0.6)]",
+              border: "border-white/10",
+              line: "rgba(0,255,120,0.5)",
+            },
+            {
+              step: "03",
+              title: "Development",
+              description:
+                "We build fast, reliable, fully custom websites — no templates, ever.",
+              glow: "shadow-[0_0_25px_rgba(0,180,255,0.6)]",
+              border: "border-white/10",
+              line: "rgba(0,180,255,0.5)",
+            },
+            {
+              step: "04",
+              title: "Launch",
+              description:
+                "We deploy, optimise, and support your site for long-term success.",
+              glow: "shadow-[0_0_25px_rgba(255,215,0,0.6)]",
+              border: "border-white/10",
+              line: "rgba(255,215,0,0.5)",
+            },
+          ].map((item, idx) => (
+            <div key={item.step} className="flex flex-col items-center">
+              <InViewOnce>
+                <FadeIn delay={0.1 * (idx + 1)}>
+                  <SlideUp distance={20}>
+                    <div
+                      className={`relative px-6 py-4 rounded-xl border ${item.border} bg-white/5 backdrop-blur-sm text-center max-w-md ${item.glow}`}
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="text-xs font-semibold uppercase tracking-[0.28em] text-white/80">
+                          Step {item.step}
+                        </div>
+                        <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+                        <p className="text-sm leading-relaxed text-slate-200/90">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </SlideUp>
+                </FadeIn>
+              </InViewOnce>
+
+              {idx < 3 && (
+                <InViewOnce>
+                  <FadeIn delay={0.12 * (idx + 1)}>
+                    <motion.svg
+                      width="4"
+                      height="80"
+                      viewBox="0 0 4 80"
+                      className="my-6"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
+                    >
+                      <motion.line
+                        x1="2"
+                        y1="0"
+                        x2="2"
+                        y2="80"
+                        stroke={item.line}
+                        strokeWidth="3"
+                        strokeDasharray="80"
+                        initial={{ strokeDashoffset: 80 }}
+                        animate={{ strokeDashoffset: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
+                        style={{ filter: `drop-shadow(0px 0px 6px ${item.line})` }}
+                      />
+                    </motion.svg>
+                  </FadeIn>
+                </InViewOnce>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Work Preview */}
       <Section className="py-24 lg:py-32 bg-[#0a0a0a]">
