@@ -154,37 +154,6 @@ export default function Home() {
           </InViewOnce>
         </Section>
 
-        {/* ---------------------------------------------------------- */}
-        {/* SERVICES SECTION                                           */}
-        {/* ---------------------------------------------------------- */}
-        <section id="services" className="relative bg-[#050505]">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[160px] bg-gradient-to-b from-[#0a0a0a] to-[#050505]"
-          />
-
-          <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-24 lg:py-28 lg:px-8">
-            <motion.div
-              className="flex flex-col items-center gap-4 text-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-flex items-center rounded-full border border-emerald-500/60 bg-emerald-500/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.2)]">
-                Services
-              </span>
-              <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                What we do best
-              </h2>
-              <p className="mt-4 max-w-2xl text-balance text-sm text-slate-300/85 sm:text-base">
-                Full-stack rigor paired with high-fidelity design. We ship dark,
-                fast, and obsessively engineered experiences that feel native
-                from day one.
-              </p>
-            </motion.div>
-          </div>
-        </section>
       </div>
 
       {/* Process */}
@@ -345,80 +314,6 @@ export default function Home() {
               </Button>
             </div>
           </FadeIn>
-        </InViewOnce>
-      </Section>
-
-      {/* Testimonials */}
-      <Section className="bg-[#0a0a0a] py-24 lg:py-32">
-        <InViewOnce>
-          <div className="text-center">
-            <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/90">
-                TESTIMONIALS
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                Client success stories
-              </h2>
-            </FadeIn>
-          </div>
-
-          <StaggerChildren className="mt-20 grid gap-8 md:grid-cols-3">
-            {[
-              {
-                quote:
-                  "Blank Slate Dev transformed our startup vision into a world-class product. Their technical expertise and attention to detail exceeded all expectations.",
-                author: "Sarah Chen",
-                role: "CEO & Founder",
-                company: "TechStart",
-                gradient: "from-blue-500 to-purple-600",
-              },
-              {
-                quote:
-                  "Working with them was like having a senior engineering team on demand. They delivered our MVP 2 weeks ahead of schedule with zero compromises on quality.",
-                author: "Michael Rodriguez",
-                role: "CTO",
-                company: "Growth Co",
-                gradient: "from-[#604585] to-[#c48ef6]",
-              },
-              {
-                quote:
-                  "The best development partner we've ever worked with. They don't just code – they understand business goals and deliver solutions that drive real results.",
-                author: "Emily Watson",
-                role: "Head of Product",
-                company: "ScaleUp Inc",
-                gradient: "from-orange-500 to-pink-600",
-              },
-            ].map((testimonial, idx) => (
-              <Card
-                key={idx}
-                className="relative overflow-hidden border-white/10 shadow-[0_18px_45px_rgba(0,0,0,0.6)] p-8"
-              >
-                <div
-                  className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient}`}
-                />
-                <div className="flex flex-col h-full">
-                  <div className="mb-6">
-                    <svg
-                      className="h-8 w-8 text-slate-300"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-                  <p className="flex-grow text-lg text-slate-200 leading-relaxed italic">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="mt-8 pt-6 border-t border-white/10">
-                    <p className="font-bold text-white">{testimonial.author}</p>
-                    <p className="text-sm text-slate-300">
-                      {testimonial.role} • {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </StaggerChildren>
         </InViewOnce>
       </Section>
 
