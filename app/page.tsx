@@ -59,14 +59,14 @@ export default function Home() {
 
   return (
     <motion.div
-      className="relative min-h-screen bg-[#0a0a0a]"
+      className="relative w-screen min-h-screen bg-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: isPageLoaded ? 1 : 0 }}
       transition={{ duration: 3 }}
     >
       <Header />
 
-      <div ref={backgroundFadeRef} className="relative">
+      <div ref={backgroundFadeRef} className="relative w-screen">
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0"
@@ -84,7 +84,7 @@ export default function Home() {
         <section
           ref={heroRef}
           id="hero-section"
-          className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]"
+          className="relative w-screen h-screen overflow-hidden bg-black m-0 p-0"
         >
           {/* Full-screen interactive Spline background (keyboard keys) */}
           <div className="hero-keyscape absolute inset-0 z-0">
