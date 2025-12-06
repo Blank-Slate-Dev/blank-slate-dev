@@ -84,7 +84,7 @@ export default function Home() {
         <section
           ref={heroRef}
           id="hero-section"
-          className="relative h-screen overflow-hidden bg-[#0a0a0a]"
+          className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]"
         >
           {/* Full-screen interactive Spline background (keyboard keys) */}
           <div className="hero-keyscape absolute inset-0 z-0">
