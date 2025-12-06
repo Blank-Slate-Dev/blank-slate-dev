@@ -135,14 +135,14 @@ export default function Home() {
               <FadeIn>
                 <div className="mb-10 text-center">
                   <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/60 bg-emerald-500/10 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-emerald-300 shadow-[0_0_24px_rgba(52,211,153,0.25)]">
-                    Product Showcase
+                    WHAT WE DO
                   </div>
                   <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                    Your product, in the spotlight
+                    Fully Functional Websites
                   </h2>
                   <p className="mt-4 max-w-2xl mx-auto text-balance text-sm sm:text-base text-slate-300/85">
-                    A live 3D Studio Display mockup powered by Spline. Rotate,
-                    explore, and see your experience on a real desk.
+                    Websites that are built from the ground up, 100% custom coded
+                    and designed specifically for your business.
                   </p>
                 </div>
               </FadeIn>
