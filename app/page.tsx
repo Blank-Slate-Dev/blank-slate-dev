@@ -5,7 +5,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Section from "@/components/section";
 import { FadeIn } from "@/components/motion/fade-in";
-import { SlideUp } from "@/components/motion/slide-up";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
 import ContactCTA from "@/components/contact-cta";
@@ -157,70 +156,61 @@ export default function Home() {
       </div>
 
       {/* Process */}
-      <Section className="bg-[#0a0a0a] py-24 lg:py-32">
+      <Section className="bg-[#050505] py-24 lg:py-32">
         <InViewOnce>
           <div className="text-center">
             <FadeIn>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/90">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-100/80">
                 PROCESS
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                How we work
+                Our Process
               </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
-                A battle-tested process refined over 120+ successful projects.
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300/90">
+                A simple, streamlined approach that delivers clarity, quality, and results.
               </p>
             </FadeIn>
           </div>
 
-          <div className="mt-20 relative">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent transform -translate-y-1/2 hidden lg:block" />
-            <div className="grid gap-12 lg:grid-cols-4">
+          <div className="mt-16">
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
                   step: "01",
                   title: "Discovery",
                   description:
-                    "Deep dive into your vision, goals, and technical requirements.",
-                  color: "from-[#604585] to-[#8f6fcc]",
+                    "We learn your goals and identify exactly what your business needs.",
                 },
                 {
                   step: "02",
                   title: "Design",
                   description:
-                    "Wireframes, prototypes, and pixel-perfect UI designs.",
-                  color: "from-[#8f6fcc] to-[#c48ef6]",
+                    "We craft clean, purposeful UI/UX that fits your brand and vision.",
                 },
                 {
                   step: "03",
                   title: "Development",
                   description:
-                    "Agile sprints with weekly demos and continuous deployment.",
-                  color: "from-[#2d233d] to-[#604585]",
+                    "We build fast, reliable, fully custom websites — no templates, ever.",
                 },
                 {
                   step: "04",
                   title: "Launch",
                   description:
-                    "Go live with confidence, backed by thorough testing and support.",
-                  color: "from-[#b373ef] to-[#c48ef6]",
+                    "We deploy, optimise, and support your site for long-term success.",
                 },
               ].map((item, idx) => (
-                <SlideUp key={idx} delay={idx * 0.15}>
-                  <div className="relative text-center lg:text-left">
-                    <div
-                      className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-white font-bold text-xl shadow-lg mb-6`}
-                    >
+                <FadeIn key={idx} delay={idx * 0.1}>
+                  <div className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-8 text-center shadow-[0_10px_60px_rgba(0,0,0,0.25)] backdrop-blur-sm">
+                    <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xs font-semibold tracking-[0.18em] text-white">
                       {item.step}
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-300 leading-relaxed">
+                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-300/90">
                       {item.description}
                     </p>
                   </div>
-                </SlideUp>
+                </FadeIn>
               ))}
             </div>
           </div>
