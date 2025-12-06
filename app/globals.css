@@ -223,6 +223,27 @@ body {
   opacity: 0.36;
 }
 
+/* Hero Spline background positioning for keyboard keys */
+.hero-keyscape {
+  display: flex;
+}
+
+@media (min-width: 1280px) {
+  .hero-keyscape {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: calc(100% - 20px);
+  }
+
+  .hero-keyscape iframe {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+}
+
 @keyframes ring-flow {
   0% {
     background-position: 0% 50%;
