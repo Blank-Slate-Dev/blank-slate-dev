@@ -86,43 +86,47 @@ export default function Home() {
           id="hero-section"
           className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]"
         >
-          {/* Full-screen interactive Spline background (keyboard keys) */}
-          <div className="hero-keyscape absolute inset-0 z-0">
-            <iframe
-              src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
-              frameBorder="0"
-              className="h-full w-full"
-              allow="fullscreen"
-              style={{ border: "none" }}
-            />
-          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative h-full w-full origin-top-left scale-[0.85] md:scale-[0.88] lg:scale-[0.9]">
+              {/* Full-screen interactive Spline background (keyboard keys) */}
+              <div className="hero-keyscape absolute inset-0 z-0">
+                <iframe
+                  src="https://my.spline.design/draganddroplandingpage-a87141UdBxnPCLMo72o08mXO/"
+                  frameBorder="0"
+                  className="h-full w-full"
+                  allow="fullscreen"
+                  style={{ border: "none" }}
+                />
+              </div>
 
-          {/* MacBook Spline - centered vertically, 100px from left */}
-          <div
-            className="absolute z-10 pointer-events-none"
-            style={{
-              left: "100px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "45%",
-              maxWidth: "700px",
-              aspectRatio: "16 / 10",
-            }}
-          >
-            <motion.div
-              className="w-full h-full"
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <iframe
-                src="https://my.spline.design/macbookwithcode-Xe4xd7M8vkd14o4G8w63yuPl/"
-                frameBorder="0"
-                className="w-full h-full"
-                allow="fullscreen"
-                style={{ border: "none", pointerEvents: "none" }}
-              />
-            </motion.div>
+              {/* MacBook Spline - centered vertically, 100px from left */}
+              <div
+                className="absolute z-10 pointer-events-none"
+                style={{
+                  left: "100px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "45%",
+                  maxWidth: "700px",
+                  aspectRatio: "16 / 10",
+                }}
+              >
+                <motion.div
+                  className="w-full h-full"
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <iframe
+                    src="https://my.spline.design/macbookwithcode-Xe4xd7M8vkd14o4G8w63yuPl/"
+                    frameBorder="0"
+                    className="w-full h-full"
+                    allow="fullscreen"
+                    style={{ border: "none", pointerEvents: "none" }}
+                  />
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
 
