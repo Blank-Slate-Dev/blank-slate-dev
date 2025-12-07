@@ -15,7 +15,7 @@ import { Card } from "@/components/ui/card";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SplineShowcase } from "@/components/spline-showcase";
 import { useRef, useEffect, useState, useCallback } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, PenTool, Code, Rocket } from "lucide-react";
 
 export default function Home() {
   const backgroundFadeRef = useRef<HTMLDivElement>(null);
@@ -160,85 +160,92 @@ export default function Home() {
       {/* Divider */}
       <div className="section-divider bg-[#0a0a0a]" />
 
-      {/* Process */}
-      <section className="relative w-full flex flex-col items-center py-32 bg-[#0a0a0a] overflow-hidden">
-        <InViewOnce>
-          <FadeIn>
-            <div className="text-center">
-              <div className="process-badge mb-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.3em]">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                </span>
-                PROCESS
+      {/* Process - How It Works */}
+      <section className="relative w-full py-24 lg:py-32 bg-[#0a0a0a] overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <InViewOnce>
+            <FadeIn>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                  How it works?
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+                  From first discovery to launch — a simple, transparent process.
+                </p>
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl drop-shadow-[0_0_5px_rgba(255,255,255,0.25)]">
-                How we work
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
-                A vertical, neon-lit journey from first discovery to launch.
-              </p>
-            </div>
-          </FadeIn>
-        </InViewOnce>
+            </FadeIn>
+          </InViewOnce>
 
-        <div className="mt-20 relative w-full overflow-x-auto px-6 py-8">
-          <div className="flex flex-row items-center justify-center gap-0">
-            {[
-              {
-                step: "01",
-                title: "Discovery",
-                description:
-                  "We learn your goals and identify exactly what your business needs.",
-                neonClass: "neon-step-1",
-              },
-              {
-                step: "02",
-                title: "Design",
-                description: "We craft clean, purposeful UI/UX that fits your vision.",
-                neonClass: "neon-step-2",
-              },
-              {
-                step: "03",
-                title: "Development",
-                description:
-                  "We build fast, reliable, fully custom websites — no templates, ever.",
-                neonClass: "neon-step-3",
-              },
-              {
-                step: "04",
-                title: "Launch",
-                description:
-                  "We deploy, optimise, and support your site for long-term success.",
-                neonClass: "neon-step-4",
-              },
-            ].map((item, idx) => (
-              <div key={item.step} className="relative flex flex-row items-center">
-                {/* Connector dots before card (except first) */}
-                {idx > 0 && (
-                  <div className="flex flex-row items-center gap-3 px-6">
-                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3) * 0.3}s` }} />
-                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3 + 1) * 0.3}s` }} />
-                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3 + 2) * 0.3}s` }} />
-                  </div>
-                )}
-                <InView>
-                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)] w-56 h-40`}>
-                    <div className="relative z-10 flex flex-col items-center justify-center gap-2 text-center h-full">
-                      <div className="tile-glow-text text-[10px] font-semibold uppercase tracking-[0.4em]">
-                        Step {item.step}
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+              {[
+                {
+                  step: "01",
+                  title: "Discovery",
+                  description: "We learn your goals and identify exactly what your business needs.",
+                  icon: Search,
+                  gradient: "from-violet-500 to-purple-600",
+                  shadowColor: "rgba(139, 92, 246, 0.3)",
+                },
+                {
+                  step: "02",
+                  title: "Design",
+                  description: "We craft clean, purposeful UI/UX that fits your vision.",
+                  icon: PenTool,
+                  gradient: "from-rose-500 to-pink-600",
+                  shadowColor: "rgba(244, 63, 94, 0.3)",
+                },
+                {
+                  step: "03",
+                  title: "Development",
+                  description: "We build fast, reliable, fully custom websites — no templates, ever.",
+                  icon: Code,
+                  gradient: "from-emerald-500 to-teal-600",
+                  shadowColor: "rgba(16, 185, 129, 0.3)",
+                },
+                {
+                  step: "04",
+                  title: "Launch",
+                  description: "We deploy, optimise, and support your site for long-term success.",
+                  icon: Rocket,
+                  gradient: "from-amber-400 to-yellow-500",
+                  shadowColor: "rgba(251, 191, 36, 0.3)",
+                },
+              ].map((item, idx) => (
+                <InView key={item.step}>
+                  <div
+                    className="group relative flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-300 hover:-translate-y-1 h-56 overflow-hidden"
+                    style={{
+                      transitionDelay: `${idx * 50}ms`,
+                    }}
+                  >
+                    {/* Icon container */}
+                    <div
+                      className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 shrink-0`}
+                      style={{
+                        boxShadow: `0 8px 32px ${item.shadowColor}`,
+                      }}
+                    >
+                      <item.icon className="w-6 h-6 text-white shrink-0" strokeWidth={1.5} />
+                      {/* Step number badge */}
+                      <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center">
+                        <span className="text-[9px] font-bold text-white/70">{item.step}</span>
                       </div>
-                      <h3 className="tile-glow-text text-lg font-semibold tracking-[0.02em]">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs leading-relaxed text-white/80">
-                        {item.description}
-                      </p>
                     </div>
+
+                    {/* Title */}
+                    <h3 className="text-base font-semibold text-white mb-2">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-xs leading-relaxed text-slate-400 px-1">
+                      {item.description}
+                    </p>
                   </div>
                 </InView>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
