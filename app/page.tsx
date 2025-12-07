@@ -161,17 +161,21 @@ export default function Home() {
       <div className="section-divider bg-[#0a0a0a]" />
 
       {/* Process */}
-      <section className="relative w-full flex flex-col items-center py-32 bg-[#0a0a0a]">
+      <section className="relative w-full flex flex-col items-center py-32 bg-[#0a0a0a] overflow-hidden">
         <InViewOnce>
           <FadeIn>
             <div className="text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-100/80">
+              <div className="process-badge mb-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.3em]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                </span>
                 PROCESS
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl drop-shadow-[0_0_5px_rgba(255,255,255,0.25)]">
                 How we work
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300/90">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
                 A vertical, neon-lit journey from first discovery to launch.
               </p>
             </div>
@@ -219,8 +223,8 @@ export default function Home() {
                   </div>
                 )}
                 <InView>
-                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)] w-56`}>
-                    <div className="relative z-10 flex flex-col items-center gap-2 text-center">
+                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)] w-56 h-40`}>
+                    <div className="relative z-10 flex flex-col items-center justify-center gap-2 text-center h-full">
                       <div className="tile-glow-text text-[10px] font-semibold uppercase tracking-[0.4em]">
                         Step {item.step}
                       </div>
