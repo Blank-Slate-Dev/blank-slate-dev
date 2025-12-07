@@ -332,36 +332,36 @@ html {
   background: linear-gradient(140deg, rgba(211, 75, 255, 0.22), rgba(143, 59, 255, 0.35));
   border: 1px solid rgba(211, 75, 255, 0.35);
   box-shadow:
-    0 0 25px #d34bff,
-    0 0 50px #8f3bff,
-    0 0 80px #8f3bff;
+    0 0 10px #d34bff,
+    0 0 20px #8f3bff,
+    0 0 35px #8f3bff;
 }
 
 .neon-step-2 {
   background: linear-gradient(140deg, rgba(45, 255, 218, 0.18), rgba(0, 184, 255, 0.3));
   border: 1px solid rgba(45, 255, 218, 0.32);
   box-shadow:
-    0 0 25px #2dffda,
-    0 0 50px #00b8ff,
-    0 0 80px #00b8ff;
+    0 0 10px #2dffda,
+    0 0 20px #00b8ff,
+    0 0 35px #00b8ff;
 }
 
 .neon-step-3 {
   background: linear-gradient(140deg, rgba(59, 178, 255, 0.2), rgba(0, 119, 255, 0.32));
   border: 1px solid rgba(59, 178, 255, 0.32);
   box-shadow:
-    0 0 25px #3bb2ff,
-    0 0 50px #0077ff,
-    0 0 80px #0077ff;
+    0 0 10px #3bb2ff,
+    0 0 20px #0077ff,
+    0 0 35px #0077ff;
 }
 
 .neon-step-4 {
   background: linear-gradient(140deg, rgba(255, 231, 96, 0.24), rgba(255, 184, 0, 0.34));
   border: 1px solid rgba(255, 231, 96, 0.36);
   box-shadow:
-    0 0 25px #ffe760,
-    0 0 50px #ffb800,
-    0 0 80px #ffb800;
+    0 0 10px #ffe760,
+    0 0 20px #ffb800,
+    0 0 35px #ffb800;
 }
 
 .connector {
