@@ -7,6 +7,7 @@ import Section from "@/components/section";
 import { FadeIn } from "@/components/motion/fade-in";
 import { StaggerChildren } from "@/components/motion/stagger-children";
 import { InViewOnce } from "@/components/motion/in-view-once";
+import { InView } from "@/components/motion/in-view";
 import { SlideUp } from "@/components/motion/slide-up";
 import ContactCTA from "@/components/contact-cta";
 import { Button } from "@/components/ui/button";
@@ -177,70 +178,57 @@ export default function Home() {
           </FadeIn>
         </InViewOnce>
 
-        <div className="mt-20 flex flex-col items-center gap-16">
-          {[
-            {
-              step: "01",
-              title: "Discovery",
-              description:
-                "We learn your goals and identify exactly what your business needs.",
-              neonClass: "neon-step-1",
-              connectorClass: "connector-step-1",
-            },
-            {
-              step: "02",
-              title: "Design",
-              description: "We craft clean, purposeful UI/UX that fits your vision.",
-              neonClass: "neon-step-2",
-              connectorClass: "connector-step-2",
-            },
-            {
-              step: "03",
-              title: "Development",
-              description:
-                "We build fast, reliable, fully custom websites — no templates, ever.",
-              neonClass: "neon-step-3",
-              connectorClass: "connector-step-3",
-            },
-            {
-              step: "04",
-              title: "Launch",
-              description:
-                "We deploy, optimise, and support your site for long-term success.",
-              neonClass: "neon-step-4",
-              connectorClass: "connector-step-4",
-            },
-          ].map((item, idx, arr) => (
-            <div key={item.step} className="relative w-full max-w-2xl mx-auto flex flex-col items-center">
-              <InViewOnce>
-                <FadeIn delay={0.08 * (idx + 1)}>
-                  <SlideUp distance={28} duration={0.7} ease="easeOut" scaleFrom={1.04}>
-                    <div className={`tile-card ${item.neonClass} shadow-[0_0_18px_rgba(255,255,255,0.08)]`}>
-                      <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-                        <div className="tile-glow-text text-[11px] font-semibold uppercase tracking-[0.42em]">
-                          Step {item.step}
-                        </div>
-                        <h3 className="tile-glow-text text-3xl font-semibold tracking-[0.02em] sm:text-4xl">
-                          {item.title}
-                        </h3>
-                        <p className="max-w-xl text-base leading-relaxed text-white/90">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </SlideUp>
-                </FadeIn>
-              </InViewOnce>
+        <div className="mt-20 relative flex flex-col items-center">
 
-              {idx < arr.length - 1 && (
-                <InViewOnce>
-                  <FadeIn delay={0.16 * (idx + 1)}>
-                    <div className={`connector ${item.connectorClass}`} />
-                  </FadeIn>
-                </InViewOnce>
-              )}
-            </div>
-          ))}
+          <div className="flex flex-col items-center gap-0">
+            {[
+              {
+                step: "01",
+                title: "Discovery",
+                description:
+                  "We learn your goals and identify exactly what your business needs.",
+                neonClass: "neon-step-1",
+              },
+              {
+                step: "02",
+                title: "Design",
+                description: "We craft clean, purposeful UI/UX that fits your vision.",
+                neonClass: "neon-step-2",
+              },
+              {
+                step: "03",
+                title: "Development",
+                description:
+                  "We build fast, reliable, fully custom websites — no templates, ever.",
+                neonClass: "neon-step-3",
+              },
+              {
+                step: "04",
+                title: "Launch",
+                description:
+                  "We deploy, optimise, and support your site for long-term success.",
+                neonClass: "neon-step-4",
+              },
+            ].map((item, idx) => (
+              <div key={item.step} className="relative w-full max-w-md mx-auto flex flex-col items-center py-10">
+                <InView>
+                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)]`}>
+                    <div className="relative z-10 flex flex-col items-center gap-2 text-center">
+                      <div className="tile-glow-text text-[10px] font-semibold uppercase tracking-[0.4em]">
+                        Step {item.step}
+                      </div>
+                      <h3 className="tile-glow-text text-xl font-semibold tracking-[0.02em] sm:text-2xl">
+                        {item.title}
+                      </h3>
+                      <p className="max-w-sm text-sm leading-relaxed text-white/80">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </InView>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

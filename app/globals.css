@@ -300,15 +300,21 @@ html {
 
 /* Neon process tiles */
 .tile-card {
-  padding: 3rem 2rem;
-  border-radius: 30px;
+  padding: 1.5rem 1.5rem;
+  border-radius: 20px;
   position: relative;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.3);
+  background: #0a0a0a;
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tile-card:hover {
+  transform: translateY(-4px) scale(1.02);
 }
 
 .tile-card::before {
@@ -332,69 +338,39 @@ html {
   background: linear-gradient(140deg, rgba(211, 75, 255, 0.22), rgba(143, 59, 255, 0.35));
   border: 1px solid rgba(211, 75, 255, 0.35);
   box-shadow:
-    0 0 10px #d34bff,
-    0 0 20px #8f3bff,
-    0 0 35px #8f3bff;
+    0 0 5px #d34bff,
+    0 0 10px #8f3bff,
+    0 0 18px #8f3bff;
 }
 
 .neon-step-2 {
   background: linear-gradient(140deg, rgba(45, 255, 218, 0.18), rgba(0, 184, 255, 0.3));
   border: 1px solid rgba(45, 255, 218, 0.32);
   box-shadow:
-    0 0 10px #2dffda,
-    0 0 20px #00b8ff,
-    0 0 35px #00b8ff;
+    0 0 5px #2dffda,
+    0 0 10px #00b8ff,
+    0 0 18px #00b8ff;
 }
 
 .neon-step-3 {
   background: linear-gradient(140deg, rgba(59, 178, 255, 0.2), rgba(0, 119, 255, 0.32));
   border: 1px solid rgba(59, 178, 255, 0.32);
   box-shadow:
-    0 0 10px #3bb2ff,
-    0 0 20px #0077ff,
-    0 0 35px #0077ff;
+    0 0 5px #3bb2ff,
+    0 0 10px #0077ff,
+    0 0 18px #0077ff;
 }
 
 .neon-step-4 {
   background: linear-gradient(140deg, rgba(255, 231, 96, 0.24), rgba(255, 184, 0, 0.34));
   border: 1px solid rgba(255, 231, 96, 0.36);
   box-shadow:
-    0 0 10px #ffe760,
-    0 0 20px #ffb800,
-    0 0 35px #ffb800;
+    0 0 5px #ffe760,
+    0 0 10px #ffb800,
+    0 0 18px #ffb800;
 }
 
-.connector {
-  width: 50%;
-  height: 70px;
-  margin: 0 auto;
-  border-radius: 40px;
-  position: relative;
-  top: -10px;
-  filter: blur(0.2px);
-}
-
-.connector-step-1 {
-  background: #8f3bff;
-  box-shadow: 0 0 40px #8f3bff;
-}
-
-.connector-step-2 {
-  background: #00b8ff;
-  box-shadow: 0 0 40px #00b8ff;
-}
-
-.connector-step-3 {
-  background: #0077ff;
-  box-shadow: 0 0 40px #0077ff;
-}
-
-.connector-step-4 {
-  background: #ffb800;
-  box-shadow: 0 0 40px #ffb800;
-}
-
-/* Animated section divider */
+/* Section divider */
 .section-divider {
   position: relative;
   width: 100%;
@@ -420,7 +396,7 @@ html {
   height: 3px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
   border-radius: 2px;
-  animation: divider-glow 4s ease-in-out infinite;
+  animation: divider-glow 8s ease-in-out infinite;
 }
 
 @keyframes divider-glow {
