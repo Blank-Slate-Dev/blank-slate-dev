@@ -220,7 +220,7 @@ export default function Home() {
                   </div>
                 )}
                 <InView>
-                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)]`}>
+                  <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)] w-80`}>
                     <div className="relative z-10 flex flex-col items-center gap-2 text-center">
                       <div className="tile-glow-text text-[10px] font-semibold uppercase tracking-[0.4em]">
                         Step {item.step}
