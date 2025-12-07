@@ -210,7 +210,15 @@ export default function Home() {
                 neonClass: "neon-step-4",
               },
             ].map((item, idx) => (
-              <div key={item.step} className="relative w-full max-w-md mx-auto flex flex-col items-center py-10">
+              <div key={item.step} className="relative w-full max-w-md mx-auto flex flex-col items-center">
+                {/* Connector dots above card (except first) */}
+                {idx > 0 && (
+                  <div className="flex flex-col items-center gap-3 py-6">
+                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3) * 0.3}s` }} />
+                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3 + 1) * 0.3}s` }} />
+                    <div className="connector-dot w-1.5 h-1.5 rounded-full" style={{ animationDelay: `${((idx - 1) * 3 + 2) * 0.3}s` }} />
+                  </div>
+                )}
                 <InView>
                   <div className={`tile-card ${item.neonClass} shadow-[0_0_12px_rgba(255,255,255,0.06)]`}>
                     <div className="relative z-10 flex flex-col items-center gap-2 text-center">
