@@ -129,7 +129,7 @@ export default function Home() {
         {/* ---------------------------------------------------------- */}
         {/* ★ PRODUCT SHOWCASE (SPLINE STUDIO DISPLAY)                 */}
         {/* ---------------------------------------------------------- */}
-        <Section className="relative bg-[#050505] py-20 lg:py-24">
+        <Section className="relative bg-[#0a0a0a] py-20 lg:py-24">
           <InViewOnce>
             <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
               <FadeIn>
@@ -155,6 +155,9 @@ export default function Home() {
         </Section>
 
       </div>
+
+      {/* Divider */}
+      <div className="section-divider bg-[#0a0a0a]" />
 
       {/* Process */}
       <section className="relative w-full flex flex-col items-center py-32 bg-[#0a0a0a]">
@@ -240,6 +243,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="section-divider bg-[#0a0a0a]" />
 
       {/* Work Preview */}
       <Section className="py-24 lg:py-32 bg-[#0a0a0a]">
@@ -330,6 +336,9 @@ export default function Home() {
           </FadeIn>
         </InViewOnce>
       </Section>
+
+      {/* Divider */}
+      <div className="section-divider bg-[#0a0a0a]" />
 
       {/* Contact CTA */}
       <ContactCTA />
